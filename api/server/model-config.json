@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../node_modules/loopback-ds-timestamp-mixin",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "postgres",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "postgres",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "postgres",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "postgres",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "postgres",
+    "public": false
+  },
+  "Container": {
+    "dataSource": "storage",
+    "public": true
+  },
+  "Account": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "AccountToken": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Contact": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Tag": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Blog": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "mail",
+    "public": false
+  },
+  "Feedback": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "CategoryProduct": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Product": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "OrderProduct": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Order": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Banner": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Test": {
+    "dataSource": "postgres",
+    "public": true
+  }
+}

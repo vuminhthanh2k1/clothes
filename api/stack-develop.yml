@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  api-develop:
+    kind: Deployment
+    image: __CONTAINER_IMAGE__
+    environment:
+      NODE_ENV: develop
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      POSTGRES_URI: 'postgres://bfast-admin:477ckThe8lock%3F@postgres-develop.bfast-vn.net:5433/plan-de-transport'
+      POSTGRES_HOST: postgres-develop.bfast-vn.net
+      POSTGRES_PORT: 5433
+      POSTGRES_USER: bfast-admin
+      POSTGRES_DATABASE: plan-de-transport
+      POSTGRES_PASSWORD: 477ckThe8lock?
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == prod1
+      labels:
+        - 'traefik.frontend.rule=Host:api.transport.develop.bfast-vn.net'
+        - 'traefik.port=3000'
+        - 'traefik.cluster-issuer=letsencrypt-prod'
+    volumes:
+      - storage-develop:/home/node/app/uploads
+    imagePullSecrets: regcred
+    imagePullPolicy: Always
+    Ingress:
+      default:
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+            nginx.ingress.kubernetes.io/proxy-body-size: 50m
+            nginx.ingress.kubernetes.io/proxy-connect-timeout: "300"
+            nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+            nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+  redis:
+    image: redis:6
+    expose:
+      - 6379:6379
+volumes:
+  storage-develop:
+    storage: 1Gi

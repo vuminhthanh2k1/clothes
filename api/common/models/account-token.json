@@ -1,0 +1,26 @@
+{
+    "name": "AccountToken",
+    "base": "AccessToken",
+    "idInjection": true,
+    "options": {
+      "validateUpsert": true
+    },
+    "mixins": {
+      "TimeStamp": {
+        "required": false,
+        "validateUpsert": true
+      }
+    },
+    "properties": {},
+    "validations": [],
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "Account",
+        "foreignKey": "userId"
+      }
+    },
+    "acls": [],
+    "methods": {}
+  }
+  

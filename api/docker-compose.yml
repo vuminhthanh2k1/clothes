@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:14
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: plan-de-transport
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 4IX2N5B37D3V

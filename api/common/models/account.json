@@ -1,0 +1,115 @@
+{
+  "name": "Account",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true
+    }
+  },
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "string"
+    },
+    "city": {
+      "type": "number"
+    },
+    "district": {
+      "type": "number"
+    },
+    "phoneNumber": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "AccountToken",
+      "foreignKey": "userId"
+    },
+    "roles": {
+      "type": "hasMany",
+      "model": "Role",
+      "foreignKey": "principalId",
+      "through": "RoleMapping"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "getMe": {
+      "accepts": [
+        {
+          "arg": "ctx",
+          "type": "any",
+          "required": true,
+          "description": "context of request",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": {
+        "root": true,
+        "type": "object"
+      },
+      "description": "Get account by token",
+      "http": [
+        {
+          "path": "/get-me",
+          "verb": "get"
+        }
+      ]
+    },
+    "changeRole": {
+      "accepts": [
+        {
+          "arg": "ctx",
+          "type": "any",
+          "required": true,
+          "description": "context of request",
+          "http": {
+            "source": "context"
+          }
+        },
+        {
+          "arg": "data",
+          "type": "object",
+          "required": true,
+          "description": "context of request",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": {
+        "root": true,
+        "type": "any"
+      },
+      "description": "Change role of user",
+      "http": [
+        {
+          "path": "/change-role",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

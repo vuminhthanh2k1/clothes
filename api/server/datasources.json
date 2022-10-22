@@ -1,0 +1,46 @@
+{
+  "postgres": {
+    "host": "localhost",
+    "port": 5433,
+    "database": "shoes",
+    "password": "Dalecarnegie521985",
+    "name": "postgres",
+    "user": "postgres",
+    "connector": "postgresql",
+    "maxOfflineRequests": 350
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./uploads",
+    "nameConflict": "makeUnique",
+    "maxFileSize": "4294967296"
+  },
+  "mail": {
+    "name": "mail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "mail.ql6625.fr",
+        "secure": false,
+        "port": 587,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "noreply@ql6625.fr",
+          "pass": "9fYXo4Ev"
+        },
+        "requireTLS": true,
+        "logger": false,
+        "debug": false
+      }
+    ]
+  },
+  "push": {
+    "name": "push",
+    "connector": "loopback-component-push"
+  }
+}

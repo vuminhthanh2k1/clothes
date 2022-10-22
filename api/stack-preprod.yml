@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  api-pprod:
+    kind: Deployment
+    image: __CONTAINER_IMAGE__
+    environment:
+      NODE_ENV: preprod
+      MYSQL_HOST: '6ce51fd0-b96b-438a-af84-24d893c27fc5.c673ik6f0bicmuuesen0.private.databases.appdomain.cloud'
+      MYSQL_PASSWORD: '1vxf7/KiISzVTqdU3Jk0eA=='
+      MYSQL_USERNAME: 'plandetransport'
+      MYSQL_PORT: 30844
+      MYSQL_DB: 'plan-de-transport'
+      SEED_DB: 'false'
+      REDIS_HOST: '4297ed17-b5ee-435b-9ece-7b15c2ade491.c3jgsjqf0prn36465j00.private.databases.appdomain.cloud'
+      IBM_CA: |-
+        -----BEGIN CERTIFICATE-----\nMIIDHTCCAgWgAwIBAgIUVia1fkXIlMxFcihoygqh6b+z7JMwDQYJKoZIhvcNAQEL\nBQAwHjEcMBoGA1UEAwwTSUJNIENsb3VkIERhdGFiYXNlczAeFw0xODEwMTExNDQ4\nNTFaFw0yODEwMDgxNDQ4NTFaMB4xHDAaBgNVBAMME0lCTSBDbG91ZCBEYXRhYmFz\nZXMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJF12Scm2FRjPocunf\nncdRALd8IFZbX8il3706xPEvovi14G4eHEfnORQch7TIOGmvElHMYemKEOvw+EYP\nf9zjSR14UA9rXxuZBh/d9QkjcNL6bc/mCT9zXnjst/jG2RlwfEMefuHAjuOw8nBn\nYPxZb6mrqSzOamJjgUZzsTLxtHwmrZLn8hefxHNPktaU1KEg3PFBqijC0onXZg8c\njzYUUW6JA9fYqbA/V12AlOp/QxJQUhfPyaz37ADtjIFF2nLU20bqgr5hjN08J6PS\ngRNa5w6OSuDfbgc8WvwLvsl4/3o5jAUHzv8rLiazweOc9Sp0JwrGuBna1Oboflu9\nS9I/AgMBAAGjUzBRMB0GA1UdDgQWBBRFz1ErFEIMBraC6wbB3M0znbmH2jAfBgNV\nHSMEGDAWgBRFz1ErFEIMBraC6wbB3M0znbmH2jAPBgNVHRMBAf8EBTADAQH/MA0G\nCSqGSIb3DQEBCwUAA4IBAQCkx5RsnOO1h4tRqG8wGmnoQ08sUjZlEt/skfGJA/da\nU/xFL2wa69cM7MGULF+hyvXHBRruNL+I3TNJkUPAq2sajFjXKByWkoBXbtrsfJrI\nAhcfys7omv2foJGTlIcArnpB/JulFHNc5at3VMkI9btHweIX4Q5BgeVU9r7CvP+J\nVF1talRQZJjwryXlXboCG4156MKpL201L2WWjk0rvPUZtJr8fNgz3n0oLy0Vtfow\nMrPXxLy9NPj8isOutrLD29IY2A0V4RlcIxS0L7sVOy0zD6pmzMMQMD/5ifuIX6bq\nlJeg5xjKvO+plIKMhOSQyu4T0MMy6fckwMZO+IbGrCdr\n-----END CERTIFICATE-----
+      REDIS_PORT: 31598
+      REDIS_USERNAME: 'ibm_cloud_c5534b92_a3d7_42bc_84a6_0f73f079ef43'
+      REDIS_PASSWORD: 'b01f1e52bf1f021598e2bb149bc69264faf334ec4e866c4aa0bfd041f9844970'
+      IBM_ENDPOINT: 's3.private.eu-de.cloud-object-storage.appdomain.cloud'
+      IBM_KEY_ID: '78dbe1e8058d4ddc9809039674040e37'
+      IBM_KEY_SECRET: 'aee94d08dee8b1b141119f4677da75cc716e62940eabab11'
+      IBM_PREFIX: 'transalliance-plandetransport-'
+      IBM_REGION: 'eu-de'
+    deploy:
+      placement:
+      labels:
+        - 'traefik.frontend.rule=Host:plandetransport.pprod.cloud.transalliance.eu;PathPrefix:/api'
+        - 'traefik.port=3000'
+        - 'traefik.cluster-issuer=letsencrypt-prod'
+        - 'traefik.second.frontend.rule=Host:api.plandetransport.pprod.cloud.transalliance.eu'
+        - 'traefik.second.port=3000'
+        - 'traefik.second.cluster-issuer=letsencrypt-prod'
+        - 'traefik.private.frontend.rule=Host:api.plandetransport.pprod.cloud.private'
+        - 'traefik.private.port=3000'
+        - 'traefik.private.ingress-class=private-iks-k8s-nginx'
+
+    imagePullSecrets: regcred
+    imagePullPolicy: Always
+    Ingress:
+      default:
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/proxy-body-size: 50m
+            nginx.ingress.kubernetes.io/proxy-send-timeout: '180'
+            nginx.ingress.kubernetes.io/proxy-read-timeout: '180'
+      second:
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/proxy-body-size: 50m
+            nginx.ingress.kubernetes.io/proxy-send-timeout: '180'
+            nginx.ingress.kubernetes.io/proxy-read-timeout: '180'
+      private:
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/proxy-body-size: 50m
+            nginx.ingress.kubernetes.io/proxy-send-timeout: '180'
+            nginx.ingress.kubernetes.io/proxy-read-timeout: '180'
