@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
-import RunnerInn from "../components/home/RunnerInn";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import AllProduct from "../components/shop/AllProduct";
@@ -72,10 +71,9 @@ export default function Shop() {
     return (
         <>
             <Header title="shop" />
-            <BannerShop />
-            <BreadCrumb title={"Tất cả sản phẩm"} categoryProductTitle={categoryProductTitle} />
+            {/* <BannerShop /> */}
+            {/* <BreadCrumb title={"Tất cả sản phẩm"} categoryProductTitle={categoryProductTitle} /> */}
             <AllProduct sort={sort} categoryProduct={categoryProduct} categoryProductTitle={categoryProductTitle} products={products} total={products.total} pageNum={activePageinit} />
-            <RunnerInn />
             <Footer />
         </>
     )

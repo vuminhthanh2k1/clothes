@@ -17,10 +17,10 @@ export default function GetInTouch() {
     }
     return (
         <>
-            <section className="contact-area section-padding-100-0 mt-7">
+            <section className="contact-area px-50 section-padding-100-0 mt-7">
                 <div className="container">
                     <div className="row align-items-center justify-content-between">
-                        <div className="col-12 col-lg-5">
+                        <div className="col-12 col-lg-6 pr-20">
                             {/* <!-- Section Heading --> */}
                             <div className="section-heading">
                                 <h2>Đăng ký để nhận tin</h2>

@@ -1,5 +1,6 @@
 import related1 from "../../assets/images/shoes/800502_01_e92c3b2bb8764b52a791846d84a3a360_grande.jpg"
 import faded1 from "../../assets/images/shoes/shoes fade 1.jpg"
+import ItemProduct from "./ItemProduct";
 
 export default function RelatedProduct(data: any) {
     const related = data.related || [];
@@ -8,7 +9,33 @@ export default function RelatedProduct(data: any) {
     }
     return (
         <>
-            <div className="list-productRelated clearfix">
+            <div className="small-container" style={{ marginTop: '50px' }}>
+                <div className="row row-2 px-10">
+                    <h2>Relate Products</h2>
+                    <p>View More</p>
+                </div>
+                <div className="row">
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                </div>
+                <div className="page-btn">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>&#8594;</span>
+                </div>
+
+
+
+            </div>
+            {/* <div className="list-productRelated clearfix">
                 <div className="heading-title text-center">
                     <h2>Sản phẩm liên quan</h2>
                 </div>
@@ -39,29 +66,9 @@ export default function RelatedProduct(data: any) {
                             </div>
                             )
                         })}
-                        {/* <div className="col-md-3 col-sm-6 col-xs-6 col-6">
-                            <div className="product-block">
-                                <div className="product-img fade-box">
-                                    <a href="#" title="Adidas EQT Cushion ADV" className="img-resize">
-                                        <img src={related1} alt="Adidas EQT Cushion ADV" className="lazyloaded" />
-                                        <img src={faded1} alt="Adidas EQT Cushion ADV" className="lazyloaded" />
-                                    </a>
-                                </div>
-                                <div className="product-detail clearfix">
-                                    <div className="pro-text">
-                                        <a style={{ color: 'black', fontSize: '14px', textDecoration: 'none' }} href="#" title="Adidas EQT Cushion ADV">
-                                            Adidas EQT Cushion ADV "North America"
-                                        </a>
-                                    </div>
-                                    <div className="pro-price">
-                                        <p>7,000,000₫</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
-            </div>
+            </div> */}
 
         </>
     )

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import LeftBlog from '../components/blog/LeftBlog';
 import RightBlog from '../components/blog/RightBlog';
-import RunnerInn from '../components/home/RunnerInn';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import BannerShop from '../components/shop/BannerShop';
@@ -91,7 +90,6 @@ export default function Blog() {
         </div>
       </div>
 
-      <RunnerInn />
 
       <Footer />
 

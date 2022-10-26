@@ -9,7 +9,9 @@ export const Routes = {
   Checkout: { path: "/checkout" },
   Portfolio: { path: "/portfolio" },
   Shop: { path: "/shop" },
-  ShopDetails: { path: "/shop-detail/:id" },
+  // ShopDetails: { path: "/shop-detail/:id" },
+  ShopDetails: { path: "/shop-detail" },
+
   SinglePortfolio: { path: "/single-portfolio" },
   SinglePost: { path: "/single-post/:id" },
   Profile: { path: "/profile" },

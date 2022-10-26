@@ -26,8 +26,36 @@ export default function AllProduct(data: any) {
     const [selectedOption, setSelectedOption] = useState(options[0].value == sort ? options[0].value : options[1].value);
     return (
         <>
-            <div className="container" style={{ marginTop: '50px' }}>
+            <div className="small-container" style={{ marginTop: '50px' }}>
+                <div className="row row-2 px-10">
+                    <h2>All Products</h2>
+                    <select>
+                        <option>Default Shop</option>
+                        <option>Short by price</option>
+                        <option>Short by popularity</option>
+                        <option>Short by Rating</option>
+                        <option>Short by Sale</option>
+                    </select>
+                </div>
                 <div className="row">
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                    <ItemProduct />
+                </div>
+                <div className="page-btn">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>&#8594;</span>
+                </div>
+
+                {/* <div className="row">
                     <div className="col-12">
                         <div className="wrap-collection-title row">
                             <div className="col-md-8 col-sm-12 col-xs-12">
@@ -57,8 +85,16 @@ export default function AllProduct(data: any) {
                             {products.map((product: any) => {
                                 return <ItemProduct product={product} />
                             })}
-
+                            <ItemProduct />
+                            <ItemProduct />
+                            <ItemProduct />
+                            <ItemProduct />
+                            <ItemProduct />
+                            <ItemProduct />
+                            <ItemProduct />
+                            <ItemProduct />
                         </div>
+                        
                         <div className="sortpagibar pagi clearfix text-center">
                             <div id="pagination" className="clearfix">
                                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 flex items-center justify-center">
@@ -66,7 +102,7 @@ export default function AllProduct(data: any) {
                                         const num = item + 1;
                                         // setActivePage(num);
                                         return (
-                                            <a href={categoryProduct ? `/shop?activePage=${num}&price=${sort}&categoryProduct=${categoryProduct}` : `/shop?activePage=${num}&price=${sort}` }>
+                                            <a href={categoryProduct ? `/shop?activePage=${num}&price=${sort}&categoryProduct=${categoryProduct}` : `/shop?activePage=${num}&price=${sort}`}>
                                                 <span className={pageNum == item + 1 ? "page-node current" : "page-node"}>{item + 1}</span>
                                             </a>
                                         )
@@ -76,7 +112,8 @@ export default function AllProduct(data: any) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
             </div>
         </>
     )

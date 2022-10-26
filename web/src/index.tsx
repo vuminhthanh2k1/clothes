@@ -4,13 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './style/style.css';
-import './assets/plugins/animate/animate.min.css'
-import './assets/plugins/bootstrap/bootstrap.min.css'
-import './assets/plugins/fontawesome/fontawesome.min.css'
-import './assets/plugins/fontawesome/fontawesome.min.css'
-import './assets/plugins/owl.carousel/owl.carousel.min.css'
-import './assets/plugins/owl.carousel/owl.theme.default.min.css'
-import './assets/plugins/uikit/uikit.min.css'
 // import './assets/css/bootstrap.css'
 import './assets/css/flickity.css'
 import './assets/css/sign.css.map'
@@ -19,6 +12,8 @@ import './assets/css/sign.css'
 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 import { ToastProvider } from 'react-toast-notifications';

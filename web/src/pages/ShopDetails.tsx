@@ -11,6 +11,11 @@ import { apiUrl } from "../enviroments";
 import { addToCart } from "../helper/addToCart";
 // import ItemRelated from "../components/shop/ItemRelated";
 import { ProductInterface } from "../models/product.interface";
+import imageHero from '../assets/images/gallery-1.jpg'
+import img1 from '../assets/images/gallery-1.jpg'
+import img2 from '../assets/images/gallery-2.jpg'
+import img3 from '../assets/images/gallery-3.jpg'
+import img4 from '../assets/images/gallery-4.jpg'
 
 
 
@@ -100,7 +105,7 @@ export default function ShopDetails() {
                 <div id="product" className="productDetail-page">
 
                     {/*  menu header seo */}
-                    <div className="breadcrumb-shop">
+                    {/* <div className="breadcrumb-shop">
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5">
@@ -125,81 +130,57 @@ export default function ShopDetails() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* detail product chính */}
-                    <div className="container">
-                        <div className="row product-detail-wrapper">
-                            <div className="col-md-12 col-sm-12 col-xs-12">
-                                <div className="row product-detail-main pr_style_01">
-                                    <div className="col-md-7 col-sm-12 col-xs-12">
-                                        <div className="product-gallery">
-                                            <div className="product-gallery__thumbs-container hidden-sm hidden-xs">
-                                                <div className="product-gallery__thumbs thumb-fix">
-                                                    <div className="product-gallery__thumb  active" id="imgg1">
-                                                        <a className="product-gallery__thumb-placeholder">
-                                                            <img src={product?.photoURL} alt={product?.title} />
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="product-image-detail box__product-gallery scroll hidden-xs">
-                                                <ul id="sliderproduct" className="site-box-content slide_product">
-                                                    <li className="product-gallery-item gallery-item current " id="imgg1a">
-                                                        <img className="product-image-feature " src={product?.photoURL} alt="" />
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div className="product-gallery-slide">
-                                            <div className="owl-carousel owl-theme owl-product-gallery-slide">
-                                                <div className="item">
-                                                    <div className="product-gallery__thumb">
-                                                        <a className="product-gallery__thumb-placeholder" href="javascript:void(0);" data-image="../assets/images/detailproduct/1.jpg" data-zoom-image="../assets/images/detailproduct/1.jpg">
-                                                            <img src={product?.photoURL} alt={product?.title} />
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                    <div className="small-container single-product">
+                        <div className="row">
+                            <div className="col-2">
+                                <div className='image-hero'>
+                                    <img src={imageHero} width="100%" id="productImg" />
+                                </div>
+                                <div className="small-img-row">
+                                    <div className="small-img-rol">
+                                        <img src={img1} width="100%" className="small-img" />
                                     </div>
-                                    <div className="col-md-5 col-sm-12 col-xs-12 product-content-desc" id="detail-product">
-                                        <div className="product-content-desc-1">
-                                            <div className="product-title">
-                                                <h1>{product?.title}</h1>
-                                                <span id="pro_sku">Xuất xứ: {product?.origin}</span>
-                                            </div>
-                                            <div className="product-price" id="price-preview"><span className="pro-price">{currencyFormat(product?.price)}</span></div>
-                                            <form id="add-item-form" action="/cart/add" method="post" className="variants clearfix">
-                                                <div className="select-swatch clearfix">
-                                                    <div id="variant-swatch-0" className="swatch clearfix" data-option="option1" data-option-index={0}>
-                                                        <div className="header" style={{ background: 'white', color: '#272727' }}><span>Màu sắc</span></div><span>{product?.color}</span>
-                                                    </div>
-                                                </div>
-                                                <div className="selector-actions">
-                                                    <div className="wrap-addcart clearfix">
-                                                        <div className="row-flex">
-                                                            <button type="button" className="button btn-addtocart addtocart-modal" onClick={() => addCart(product)}>Thêm
-                                                                vào</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <div className="product-description">
-                                                <div className="title-bl">
-                                                    <div dangerouslySetInnerHTML={{ __html: product?.content || '' }} />
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div className="small-img-rol">
+                                        <img src={img2} width="100%" className="small-img" />
+                                    </div>
+                                    <div className="small-img-rol">
+                                        <img src={img3} width="100%" className="small-img" />
+                                    </div>
+                                    <div className="small-img-rol">
+                                        <img src={img4} width="100%" className="small-img" />
                                     </div>
                                 </div>
-
-                                <RelatedProduct related={related} />
-
+                            </div>
+                            <div className="col-2">
+                                <p>Home / T-Shirt</p>
+                                <h1>Red Printd T-Shirt by Huy</h1>
+                                <h4>$50.00</h4>
+                                <select>
+                                    <option>Select Size</option>
+                                    <option>XXL</option>
+                                    <option>XL</option>
+                                    <option>Large</option>
+                                    <option>Medium</option>
+                                    <option>Small</option>
+                                </select><input type="number" defaultValue={1} />
+                                <a href="#" className="btn">Add To Card</a>
+                                <h3>Product Detail
+                                    <i className="fa fa-indent" />
+                                </h3>
+                                <br />
+                                <p>Surrounded affronting favourable no mr. Lain knew like half she yet joy. Be than dull as seen
+                                    very shot. Attachment ye so am travelling estimating projecting is. Off fat address attacks his
+                                    besides. Suitable settling mr attended no doubtful feelings. Any over for say bore such sold
+                                    five but hung</p>
                             </div>
                         </div>
                     </div>
+
                 </div>
+                <RelatedProduct />
             </main >
 
 
