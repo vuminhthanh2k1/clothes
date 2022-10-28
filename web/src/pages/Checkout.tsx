@@ -124,15 +124,15 @@ export default function Checkout() {
   return (
     <>
       <Header />
-      <div className="checkout_area mb-100 mt-7">
+      <div className="checkout_area mt-50 mb-100">
         <div className="container">
           <div className="row justify-content-between">
-            <div className="col-12 col-lg-7">
+            <div className="col-12 col-lg-7 pr-50">
               <div className="checkout_details_area clearfix">
                 <h5>Thông tin</h5>
                 <form action="#" method="post">
                   <div className="row">
-                    <div className="col-md-6 mb-4">
+                    <div className="col-md-6 pr-10 mb-4">
                       <label>Họ *</label>
                       <Controller
                         control={control}
@@ -155,7 +155,7 @@ export default function Checkout() {
                         defaultValue={user?.firstName}
                       />
                     </div>
-                    <div className="col-md-6 mb-4">
+                    <div className="col-md-6 pl-10 mb-4">
                       <label>Tên *</label>
                       <Controller
                         control={control}
@@ -178,7 +178,7 @@ export default function Checkout() {
                         defaultValue={user?.lastName}
                       />
                     </div>
-                    <div className="col-12 mb-4">
+                    <div className="width-full mb-4">
                       <label>Email *</label>
                       <Controller
                         control={control}
@@ -202,7 +202,7 @@ export default function Checkout() {
                         defaultValue={user?.email}
                       />
                     </div>
-                    <div className="col-12 mb-4">
+                    <div className="width-full mb-4">
                       <label>Số điện thoại *</label>
                       <Controller
                         control={control}
@@ -226,7 +226,7 @@ export default function Checkout() {
                         defaultValue={user?.phoneNumber}
                       />
                     </div>
-                    <div className="col-12 mb-4">
+                    <div className="width-full mb-4">
                       <label>Địa chỉ *</label>
                       <Controller
                         control={control}
@@ -247,7 +247,7 @@ export default function Checkout() {
                         rules={{ required: true }}
                       />
                     </div>
-                    <div className="col-md-6 mb-4">
+                    <div className="col-md-6 pr-10 mb-4">
                       <label>Tỉnh/Thành phố *</label>
                       <select
                         onChange={(e) => handleSelectCity(e)}
@@ -263,7 +263,7 @@ export default function Checkout() {
                         })}
                       </select>
                     </div>
-                    <div className="col-md-6 mb-4">
+                    <div className="col-md-6 pl-10 mb-4">
                       <label>Quận/Huyện *</label>
                       <select
                         onChange={(e) => handleSelectDistrict(e)}
@@ -306,35 +306,52 @@ export default function Checkout() {
                 <div className="products">
                   <div className="products-data">
                     <h5>Sản phẩm:</h5>
-                    {data?.orderProducts?.map(
+                    {/* {data?.orderProducts?.map(
                       (orderProduct: OrderProductInterface, index: number) => {
                         return (
-                          <div
-                            key={index}
-                            className="single-products d-flex justify-content-between align-items-center mt-3"
-                          >
-                            <div>
-                              {orderProduct.product.title} x{" "}
-                              {orderProduct.amount}
-                            </div>
-                            <div className="font-bold">
-                              {currencyFormat(
+                          
+                        );
+                      }
+                    )} */}
+                    <div className="single-products flex justify-between items-center mt-10">
+                      <div>
+                        {/* {orderProduct.product.title} x{" "}
+                              {orderProduct.amount} */}
+                        ABC x 4
+                      </div>
+                      <div className="font-bold">
+                        {/* {currencyFormat(
                                 Number(
                                   orderProduct.amount *
                                     orderProduct.product.price
                                 )
-                              )}
-                            </div>
-                          </div>
-                        );
-                      }
-                    )}
+                              )} */}
+                        50$
+                      </div>
+                    </div>
+                    <div className="single-products flex justify-between items-center mt-10">
+                      <div>
+                        {/* {orderProduct.product.title} x{" "}
+                              {orderProduct.amount} */}
+                        ABC x 4
+                      </div>
+                      <div className="font-bold">
+                        {/* {currencyFormat(
+                                Number(
+                                  orderProduct.amount *
+                                    orderProduct.product.price
+                                )
+                              )} */}
+                        50$
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="order-total d-flex justify-content-between align-items-center mt-8">
+                <div className="order-total flex justify-between items-center mt-10">
                   <div>Tổng tiền</div>
                   <div className="font-bold">
-                    {currencyFormat(Number(data?.price))}
+                    {/* {currencyFormat(Number(data?.price))} */}
+                    200$
                   </div>
                 </div>
                 <div className="order-total d-flex justify-content-between align-items-center mt-8">

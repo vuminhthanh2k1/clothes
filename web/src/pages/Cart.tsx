@@ -8,6 +8,7 @@ import Header from "../components/layout/Header";
 import { apiUrl } from "../enviroments";
 import { OrderProductInterface } from "../models/order-product.interface";
 import { Routes } from "../routes";
+import imgProduct from '../assets/images/category-2.jpg'
 const access_token = localStorage.getItem("token");
 const userId = localStorage.getItem("userId");
 export default function Cart() {
@@ -58,174 +59,211 @@ export default function Cart() {
   return (
     <>
       <Header />
-      <div className="cart-area section-padding-0-100 clearfix mt-7">
-        <div className="container">
-          {orderProducts?.length > 0 ? (
-            <>
-              <div className="row">
-                <div className="col-12">
-                  <div className="cart-table clearfix">
-                    {orderProducts?.length > 0 ? (
-                      <table className="table">
-                        <thead>
-                          <tr>
-                            <th>Sản phẩm</th>
-                            <th>Số lượng</th>
-                            <th>Đơn giá</th>
-                            <th>Thành tiền</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {orderProducts?.map((orderProduct, index) => {
-                            return (
-                              <OrderProduct
-                                price={price}
-                                setPrice={setPrice}
-                                key={index}
-                                orderProduct={orderProduct}
-                                search={search}
-                              />
-                            );
-                          })}
-                        </tbody>
-                      </table>
-                    ) : (
-                      <div>Giỏ hàng trống!</div>
-                    )}
+      <div className="small-container cart-page">
+        <table>
+          <tbody><tr>
+            <th>Sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Tiền hàng</th>
+          </tr>
+            <tr>
+              <td>
+                <div className="cart-info">
+                  <img src={imgProduct} />
+                  <div>
+                    <p>Red Printed Tshirt</p>
+                    <small>Price: $50.00</small>
+                    <br />
+                    <div className="remove-btn">Xóa</div>
                   </div>
                 </div>
-              </div>
-
-              <div className="row">
-                <div className="col-12 col-lg-6"></div>
-                {/* <!-- Cart Totals --> */}
-                <div className="col-12 col-lg-6">
-                  <div className="cart-totals-area mt-70">
-                    <h5 className="title--">Giỏ hàng</h5>
-                    <div className="total d-flex justify-content-between">
-                      <h5>Tổng</h5>
-                      <h5>{currencyFormat(price)}</h5>
-                    </div>
-                    <div className="checkout-btn">
-                      <div
-                        onClick={checkout}
-                        className=" alazea-btn w-100 text-center"
-                      >
-                        Thanh toán
-                      </div>
-                    </div>
+              </td>
+              <td>
+                <div className="flex justify-center items-center">
+                  <input type="number" defaultValue={1} />
+                </div>
+              </td>
+              <td>
+                <div className="flex justify-center items-center">
+                  $50.00
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="cart-info">
+                  <img src={imgProduct} />
+                  <div>
+                    <p>Red Printed Tshirt</p>
+                    <small>Price: $75.00</small>
+                    <br />
+                    <div className="remove-btn">Xóa</div>
                   </div>
                 </div>
+              </td>
+              <td>
+                <div className="flex justify-center items-center">
+                  <input type="number" defaultValue={1} />
+                </div>
+              </td>
+              <td>
+                <div className="flex justify-center items-center">
+                  $50.00
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="cart-info">
+                  <img src={imgProduct} />
+                  <div>
+                    <p>Red Printed Tshirt</p>
+                    <small>Price: $50.00</small>
+                    <br />
+                    <div className="remove-btn">Xóa</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="flex justify-center items-center">
+                  <input type="number" defaultValue={1} />
+                </div>
+              </td>
+              <td>
+                <div className="flex justify-center items-center">
+                  $50.00
+                </div>
+              </td>
+            </tr>
+          </tbody></table>
+        <div className="total-price">
+          <div className="wrap-total-price">
+            <table>
+              <tbody><tr>
+                <td>Tổng tiền hàng</td>
+                <td>175.000$</td>
+              </tr>
+                <tr>
+                  <td>Phí vận chuyển</td>
+                  <td>25.00$</td>
+                </tr>
+                <tr>
+                  <td>Tổng thanh toán</td>
+                  <td>200.000$</td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="/checkout" className="flex justify-center">
+              <div className="confirm-to-checkout alazea-btn text-center">
+                Xác nhận
               </div>
-            </>
-          ) : (
-            <div className="my-8">Giỏ hàng trống!</div>
-          )}
+            </a>
+          </div>
         </div>
       </div>
+
       <Footer />
     </>
   );
 }
 
-const OrderProduct = ({
-  orderProduct,
-  search,
-  price,
-  setPrice,
-}: {
-  orderProduct: OrderProductInterface;
-  search: any;
-  price: number;
-  setPrice: any;
-}) => {
-  const [amount, setAmount] = useState<number>(orderProduct.amount);
+// const OrderProduct = ({
+//   orderProduct,
+//   search,
+//   price,
+//   setPrice,
+// }: {
+//   orderProduct: OrderProductInterface;
+//   search: any;
+//   price: number;
+//   setPrice: any;
+// }) => {
+//   const [amount, setAmount] = useState<number>(orderProduct.amount);
 
-  const currencyFormat = (num: any) => {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " VNĐ";
-  };
-  let { addToast } = useToasts();
-  const deleteOrderProduct = async () => {
-    axios({
-      method: "DELETE",
-      url: `${apiUrl}/OrderProducts/${orderProduct.id}`,
-      params: {
-        access_token,
-      },
-    }).then(() => {
-      addToast("Xóa sản phẩm khỏi giỏ hàng thành công!", {
-        appearance: "success",
-        autoDismiss: true,
-      });
-      search();
-    });
-  };
-  const updateOrderProduct = async (num: number) => {
-    axios({
-      method: "PATCH",
-      url: `${apiUrl}/OrderProducts/${orderProduct.id}`,
-      params: {
-        access_token,
-      },
-      data: { amount: num },
-    }).then(() => {
-      search();
-    });
-  };
-  const addPrice = () => {
-    updateOrderProduct(orderProduct.amount + 1);
-    let total = price;
-    total += orderProduct.price;
-    setPrice(total);
-  };
-  const subPrice = () => {
-    if (orderProduct.amount == 1) {
-      deleteOrderProduct();
-      let total = price;
-      total -= orderProduct.price;
-      setPrice(total);
-    } else {
-      let total = price;
-      total -= orderProduct.price;
-      setPrice(total);
-      updateOrderProduct(orderProduct.amount - 1);
-    }
-  };
-  return (
-    <tr>
-      <td className="cart_product_img">
-        <img
-          src={orderProduct.product.photoURL}
-          alt="Product"
-          style={{ width: 150, height: "auto", objectFit: "contain" }}
-        />
-        <h5 style={{ marginTop: 15 }} className="font-bold">
-          {orderProduct.product.title}
-        </h5>
-      </td>
-      <td className="qty">
-        <div className="quantity">
-          <button onClick={subPrice}>-</button>
-          <div>{orderProduct.amount}</div>
-          <button onClick={addPrice}>+</button>
-        </div>
-      </td>
-      <td className="price">
-        <span>{currencyFormat(orderProduct.product.price)}</span>
-      </td>
-      <td className="total_price">
-        <span>
-          {currencyFormat(
-            Number(orderProduct.product.price * Number(orderProduct.amount))
-          )}
-        </span>
-      </td>
-      <td className="action">
-        <div style={{ cursor: "pointer" }} onClick={deleteOrderProduct}>
-          <i className="icon_close"></i>
-        </div>
-      </td>
-    </tr>
-  );
-};
+//   const currencyFormat = (num: any) => {
+//     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " VNĐ";
+//   };
+//   let { addToast } = useToasts();
+//   const deleteOrderProduct = async () => {
+//     axios({
+//       method: "DELETE",
+//       url: `${apiUrl}/OrderProducts/${orderProduct.id}`,
+//       params: {
+//         access_token,
+//       },
+//     }).then(() => {
+//       addToast("Xóa sản phẩm khỏi giỏ hàng thành công!", {
+//         appearance: "success",
+//         autoDismiss: true,
+//       });
+//       search();
+//     });
+//   };
+//   const updateOrderProduct = async (num: number) => {
+//     axios({
+//       method: "PATCH",
+//       url: `${apiUrl}/OrderProducts/${orderProduct.id}`,
+//       params: {
+//         access_token,
+//       },
+//       data: { amount: num },
+//     }).then(() => {
+//       search();
+//     });
+//   };
+//   const addPrice = () => {
+//     updateOrderProduct(orderProduct.amount + 1);
+//     let total = price;
+//     total += orderProduct.price;
+//     setPrice(total);
+//   };
+//   const subPrice = () => {
+//     if (orderProduct.amount == 1) {
+//       deleteOrderProduct();
+//       let total = price;
+//       total -= orderProduct.price;
+//       setPrice(total);
+//     } else {
+//       let total = price;
+//       total -= orderProduct.price;
+//       setPrice(total);
+//       updateOrderProduct(orderProduct.amount - 1);
+//     }
+//   };
+//   return (
+//     <tr>
+//       <td className="cart_product_img">
+//         <img
+//           src={orderProduct.product.photoURL}
+//           alt="Product"
+//           style={{ width: 150, height: "auto", objectFit: "contain" }}
+//         />
+//         <h5 style={{ marginTop: 15 }} className="font-bold">
+//           {orderProduct.product.title}
+//         </h5>
+//       </td>
+//       <td className="qty">
+//         <div className="quantity">
+//           <button onClick={subPrice}>-</button>
+//           <div>{orderProduct.amount}</div>
+//           <button onClick={addPrice}>+</button>
+//         </div>
+//       </td>
+//       <td className="price">
+//         <span>{currencyFormat(orderProduct.product.price)}</span>
+//       </td>
+//       <td className="total_price">
+//         <span>
+//           {currencyFormat(
+//             Number(orderProduct.product.price * Number(orderProduct.amount))
+//           )}
+//         </span>
+//       </td>
+//       <td className="action">
+//         <div style={{ cursor: "pointer" }} onClick={deleteOrderProduct}>
+//           <i className="icon_close"></i>
+//         </div>
+//       </td>
+//     </tr>
+//   );
+// };

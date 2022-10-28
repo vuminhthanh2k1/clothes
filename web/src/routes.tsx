@@ -13,7 +13,7 @@ export const Routes = {
   ShopDetails: { path: "/shop-detail" },
 
   SinglePortfolio: { path: "/single-portfolio" },
-  SinglePost: { path: "/single-post/:id" },
+  SinglePost: { path: "/single-post" },
   Profile: { path: "/profile" },
   Contact: {path: "/contact"},
   Order: {path: "/order"},

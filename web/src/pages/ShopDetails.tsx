@@ -16,8 +16,7 @@ import img1 from '../assets/images/gallery-1.jpg'
 import img2 from '../assets/images/gallery-2.jpg'
 import img3 from '../assets/images/gallery-3.jpg'
 import img4 from '../assets/images/gallery-4.jpg'
-
-
+// import '../style/blog.scss'
 
 const access_token = localStorage.getItem("token")
 
@@ -137,20 +136,20 @@ export default function ShopDetails() {
                         <div className="row">
                             <div className="col-2">
                                 <div className='image-hero'>
-                                    <img src={imageHero} width="100%" id="productImg" />
+                                    <img src={imageHero} width="100%" alt="" id="productImg" />
                                 </div>
                                 <div className="small-img-row">
                                     <div className="small-img-rol">
-                                        <img src={img1} width="100%" className="small-img" />
+                                        <img src={img1} width="100%" alt="" className="small-img" />
                                     </div>
                                     <div className="small-img-rol">
-                                        <img src={img2} width="100%" className="small-img" />
+                                        <img src={img2} width="100%" alt="" className="small-img" />
                                     </div>
                                     <div className="small-img-rol">
-                                        <img src={img3} width="100%" className="small-img" />
+                                        <img src={img3} width="100%" alt="" className="small-img" />
                                     </div>
                                     <div className="small-img-rol">
-                                        <img src={img4} width="100%" className="small-img" />
+                                        <img src={img4} width="100%" alt="" className="small-img" />
                                     </div>
                                 </div>
                             </div>

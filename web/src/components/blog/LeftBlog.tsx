@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import imgBlog from '../../assets/images/blog/n-1.jpg'
 import TagBlog from './TagBlog';
+import blog1 from '../../assets/images/category-2.jpg'
 export default function LeftBlog(data: any) {
 
-    const blogs: any = data && data.blogs.data && data.blogs.data.length > 0 ? data.blogs.data : [];
-    const [accounts, setAccounts] = useState([] as any);
-    const [activePage, setActivePage] = useState(1);
+    // const blogs: any = data && data.blogs.data && data.blogs.data.length > 0 ? data.blogs.data : [];
+    // const [accounts, setAccounts] = useState([] as any);
+    // const [activePage, setActivePage] = useState(1);
     return (
         <>
             <div className="col-md-3 d-none d-sm-block d-sm-none d-md-block">
@@ -15,7 +16,36 @@ export default function LeftBlog(data: any) {
                             <h2>Bài viết mới nhất</h2>
                         </div>
                         <div className="list-news-latest layered">
-                            {blogs.map((item: any, index: any) => {
+                            <div className="item-article clearfix">
+                                <div className="post-image">
+                                    <a >
+                                        <img src={blog1} width="100%" alt="" />
+                                    </a>
+
+                                </div>
+                                <div className="post-content">
+                                    <h3>
+                                        <a style={{ fontWeight: '600' }}  >Title here</a>
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div className="item-article clearfix">
+                                <div className="post-image">
+                                    <a >
+                                        <img src={ blog1 } alt="" />
+                                    </a>
+
+                                </div>
+                                <div className="post-content">
+                                    <h3>
+                                        <a style={{ fontWeight: '600' }}  >Title here</a>
+                                    </h3>
+                                </div>
+                            </div>
+
+                            
+                            {/* {blogs.map((item: any, index: any) => {
                                 return (
                                     <div className="item-article clearfix">
                                         <div className="post-image">
@@ -31,7 +61,7 @@ export default function LeftBlog(data: any) {
                                         </div>
                                     </div>
                                 )
-                            })}
+                            })} */}
 
                         </div>
                     </div>

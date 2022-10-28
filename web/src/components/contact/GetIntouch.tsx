@@ -17,7 +17,7 @@ export default function GetInTouch() {
     }
     return (
         <>
-            <section className="contact-area px-50 section-padding-100-0 mt-7">
+            <section className="contact-area px-50 section-padding-100-0 mt-50">
                 <div className="container">
                     <div className="row align-items-center justify-content-between">
                         <div className="col-12 col-lg-6 pr-20">
@@ -30,7 +30,7 @@ export default function GetInTouch() {
                             <div className="contact-form-area mb-100">
                                 <form action="#" method="post">
                                     <div className="row">
-                                        <div className="col-12 col-sm-6">
+                                        <div className="col-12 col-sm-6 pr-10">
                                             <div className="form-group">
                                                 <Controller
                                                     control={control}
@@ -49,7 +49,7 @@ export default function GetInTouch() {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-12 col-sm-6">
+                                        <div className="col-12 col-sm-6 pl-10">
                                             <div className="form-group">
                                                 <Controller
                                                     control={control}
@@ -68,7 +68,7 @@ export default function GetInTouch() {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-12">
+                                        <div className="col-12 col-sm-12">
                                             <div className="form-group">
                                                 <Controller
                                                     control={control}
@@ -86,7 +86,7 @@ export default function GetInTouch() {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-12">
+                                        <div className="col-12 col-sm-12">
                                             <div className="form-group">
                                                 <Controller
                                                     control={control}
@@ -104,7 +104,7 @@ export default function GetInTouch() {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-12">
+                                        <div className="col-12 col-sm-12">
                                             <button onClick={handleSubmit(contact)} className=" alazea-btn mt-15">Gửi tin nhắn</button>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@ export default function GetInTouch() {
                         <div className="col-12 col-lg-6">
                             {/* <!-- Google Maps --> */}
                             <div className="map-area mb-100">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.81545829258!2d105.84031981482019!3d21.00003329413453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac70a2f48a15%3A0xfc5dfbb8602d0eef!2zMjA3IEdp4bqjaSBQaMOzbmcsIMSQ4buTbmcgVMOibSwgxJDhu5FuZyDEkGEsIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1658380585325!5m2!1svi!2s" width="600" height="450" style={{ border: 0 }} loading="lazy"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.81545829258!2d105.84031981482019!3d21.00003329413453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac70a2f48a15%3A0xfc5dfbb8602d0eef!2zMjA3IEdp4bqjaSBQaMOzbmcsIMSQ4buTbmcgVMOibSwgxJDhu5FuZyDEkGEsIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1658380585325!5m2!1svi!2s" width="100%" height="450" style={{ border: 0 }} loading="lazy"></iframe>
                             </div>
                         </div>
                     </div>

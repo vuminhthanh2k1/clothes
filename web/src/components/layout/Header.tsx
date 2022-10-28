@@ -129,7 +129,7 @@ export default function Header(data: any) {
                 <li><a href="/account">Account</a></li>
               </ul>
             </nav>
-            <a href="cart.html"><img src={Cart} width="30px" height="30px" /></a>
+            <a href="/cart"><img src={Cart} width="30px" height="30px" /></a>
             <img src={Menu} className="menu-icon" />
           </div>
           

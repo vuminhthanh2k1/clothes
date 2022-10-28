@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { apiUrl } from "../../enviroments";
 import { BlogInterface } from "../../models/blog.interface";
 import { Routes } from "../../routes";
-
+import recentBlog from '../../assets/images/category-2.jpg'
 export default function RecentlyBlog() {
   const [blogs, setBlogs] = useState({
     total: 0,
@@ -45,23 +45,45 @@ export default function RecentlyBlog() {
         <div className="widget-title">
           <h4>Bài viết gần đây</h4>
         </div>
-        {blogs?.data.map((blog: BlogInterface, index: number) => {
-          return (
-            <div className="single-latest-post d-flex align-items-center cursor-pointer" key={index} onClick={() => routerBlogDetail(blog)}>
-              <div className="post-thumb">
-                <img src={blog.photoURL} alt="" />
-              </div>
-              <div className="post-content">
-                <div className="post-title">
-                  <h6>{blog.title}</h6>
-                </div>
-                <div className="post-date">
-                  {moment(blog.createdAt).format("DD-MM-YYYY")}
-                </div>
-              </div>
+        <div className="single-latest-post d-flex align-items-center cursor-pointer">
+          <div className="post-thumb">
+            <img src={recentBlog} alt="" />
+          </div>
+          <div className="post-content">
+            <div className="post-title">
+              <h6>title recent blog</h6>
             </div>
-          )
-        })}
+            <div className="post-date">
+              12/12/2022
+            </div>
+          </div>
+        </div>
+        <div className="single-latest-post d-flex align-items-center cursor-pointer">
+          <div className="post-thumb">
+            <img src={recentBlog} alt="" />
+          </div>
+          <div className="post-content">
+            <div className="post-title">
+              <h6>title recent blog</h6>
+            </div>
+            <div className="post-date">
+              12/12/2022
+            </div>
+          </div>
+        </div>
+        <div className="single-latest-post d-flex align-items-center cursor-pointer">
+          <div className="post-thumb">
+            <img src={recentBlog} alt="" />
+          </div>
+          <div className="post-content">
+            <div className="post-title">
+              <h6>title recent blog</h6>
+            </div>
+            <div className="post-date">
+              12/12/2022
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )
