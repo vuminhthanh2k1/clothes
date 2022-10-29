@@ -210,6 +210,13 @@ export interface Tag {
     "updatedAt"?: Date;
 }
 
+export interface Test {
+    "name"?: string;
+    "id"?: number;
+    "createdAt"?: Date;
+    "updatedAt"?: Date;
+}
+
 
 
 /**
@@ -16432,6 +16439,1089 @@ export const TagApiFactory = function (fetch?: FetchAPI, basePath?: string) {
          */
         tagUpsertWithWhere(params: {  "where"?: string; "data"?: Tag; }, options?: any) {
             return TagApiFp.tagUpsertWithWhere(params, options)(fetch, basePath);
+        },
+    };
+};
+
+
+/**
+ * TestApi - fetch parameter creator
+ */
+export const TestApiFetchParamCreator = {
+    /**
+     * 
+     * @summary Count instances of the model matched by where from the data source.
+     * @param where Criteria to match model instances
+     */
+    testCount(params: {  "where"?: string; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests/count`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "where": params["where"],
+        });
+        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Create a new instance of the model and persist it into the data source.
+     * @param data Model instance data
+     */
+    testCreate(params: {  "data"?: Test; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "POST" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Create a change stream.
+     * @param options 
+     */
+    testCreateChangeStreamGetTestsChangeStream(params: {  "options"?: string; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests/change-stream`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "options": params["options"],
+        });
+        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Create a change stream.
+     * @param options 
+     */
+    testCreateChangeStreamPostTestsChangeStream(params: {  "options"?: string; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests/change-stream`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "POST" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/x-www-form-urlencoded" };
+        fetchOptions.body = querystring.stringify({
+            "options": params["options"],
+        });
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Delete a model instance by {{id}} from the data source.
+     * @param id Model id
+     */
+    testDeleteById(params: {  "id": string; }, options?: any): FetchArgs {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling testDeleteById");
+        }
+        const baseUrl = `/Tests/{id}`
+            .replace(`{${"id"}}`, `${ params["id"] }`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "DELETE" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    testExistsGetTestsidExists(params: {  "id": string; }, options?: any): FetchArgs {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling testExistsGetTestsidExists");
+        }
+        const baseUrl = `/Tests/{id}/exists`
+            .replace(`{${"id"}}`, `${ params["id"] }`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    testExistsHeadTestsid(params: {  "id": string; }, options?: any): FetchArgs {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling testExistsHeadTestsid");
+        }
+        const baseUrl = `/Tests/{id}`
+            .replace(`{${"id"}}`, `${ params["id"] }`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "HEAD" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Find all instances of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    testFind(params: {  "filter"?: string; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "filter": params["filter"],
+        });
+        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Find a model instance by {{id}} from the data source.
+     * @param id Model id
+     * @param filter Filter defining fields and include - must be a JSON-encoded string ({\&quot;something\&quot;:\&quot;value\&quot;})
+     */
+    testFindById(params: {  "id": string; "filter"?: string; }, options?: any): FetchArgs {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling testFindById");
+        }
+        const baseUrl = `/Tests/{id}`
+            .replace(`{${"id"}}`, `${ params["id"] }`);
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "filter": params["filter"],
+        });
+        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Find first instance of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    testFindOne(params: {  "filter"?: string; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests/findOne`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "filter": params["filter"],
+        });
+        let fetchOptions: RequestInit = assign({}, { method: "GET" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Patch an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testPatchOrCreate(params: {  "data"?: Test; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "PATCH" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Patch attributes for a model instance and persist it into the data source.
+     * @param id Test id
+     * @param data An object of model property name/value pairs
+     */
+    testPrototypePatchAttributes(params: {  "id": string; "data"?: Test; }, options?: any): FetchArgs {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling testPrototypePatchAttributes");
+        }
+        const baseUrl = `/Tests/{id}`
+            .replace(`{${"id"}}`, `${ params["id"] }`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "PATCH" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    testReplaceByIdPostTestsidReplace(params: {  "id": string; "data"?: Test; }, options?: any): FetchArgs {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling testReplaceByIdPostTestsidReplace");
+        }
+        const baseUrl = `/Tests/{id}/replace`
+            .replace(`{${"id"}}`, `${ params["id"] }`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "POST" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    testReplaceByIdPutTestsid(params: {  "id": string; "data"?: Test; }, options?: any): FetchArgs {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling testReplaceByIdPutTestsid");
+        }
+        const baseUrl = `/Tests/{id}`
+            .replace(`{${"id"}}`, `${ params["id"] }`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "PUT" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testReplaceOrCreatePostTestsReplaceOrCreate(params: {  "data"?: Test; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests/replaceOrCreate`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "POST" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testReplaceOrCreatePutTests(params: {  "data"?: Test; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions: RequestInit = assign({}, { method: "PUT" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Update instances of the model matched by {{where}} from the data source.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    testUpdateAll(params: {  "where"?: string; "data"?: Test; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests/update`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "where": params["where"],
+        });
+        let fetchOptions: RequestInit = assign({}, { method: "POST" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     * 
+     * @summary Update an existing model instance or insert a new one into the data source based on the where criteria.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    testUpsertWithWhere(params: {  "where"?: string; "data"?: Test; }, options?: any): FetchArgs {
+        const baseUrl = `/Tests/upsertWithWhere`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "where": params["where"],
+        });
+        let fetchOptions: RequestInit = assign({}, { method: "POST" }, options);
+
+        let contentTypeHeader: Dictionary<string> = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+};
+
+/**
+ * TestApi - functional programming interface
+ */
+export const TestApiFp = {
+    /**
+     * 
+     * @summary Count instances of the model matched by where from the data source.
+     * @param where Criteria to match model instances
+     */
+    testCount(params: { "where"?: string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2002> {
+        const fetchArgs = TestApiFetchParamCreator.testCount(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Create a new instance of the model and persist it into the data source.
+     * @param data Model instance data
+     */
+    testCreate(params: { "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testCreate(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Create a change stream.
+     * @param options 
+     */
+    testCreateChangeStreamGetTestsChangeStream(params: { "options"?: string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
+        const fetchArgs = TestApiFetchParamCreator.testCreateChangeStreamGetTestsChangeStream(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Create a change stream.
+     * @param options 
+     */
+    testCreateChangeStreamPostTestsChangeStream(params: { "options"?: string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
+        const fetchArgs = TestApiFetchParamCreator.testCreateChangeStreamPostTestsChangeStream(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Delete a model instance by {{id}} from the data source.
+     * @param id Model id
+     */
+    testDeleteById(params: { "id": string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
+        const fetchArgs = TestApiFetchParamCreator.testDeleteById(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    testExistsGetTestsidExists(params: { "id": string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2003> {
+        const fetchArgs = TestApiFetchParamCreator.testExistsGetTestsidExists(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    testExistsHeadTestsid(params: { "id": string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2003> {
+        const fetchArgs = TestApiFetchParamCreator.testExistsHeadTestsid(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Find all instances of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    testFind(params: { "filter"?: string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Test>> {
+        const fetchArgs = TestApiFetchParamCreator.testFind(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Find a model instance by {{id}} from the data source.
+     * @param id Model id
+     * @param filter Filter defining fields and include - must be a JSON-encoded string ({\&quot;something\&quot;:\&quot;value\&quot;})
+     */
+    testFindById(params: { "id": string; "filter"?: string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testFindById(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Find first instance of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    testFindOne(params: { "filter"?: string;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testFindOne(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Patch an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testPatchOrCreate(params: { "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testPatchOrCreate(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Patch attributes for a model instance and persist it into the data source.
+     * @param id Test id
+     * @param data An object of model property name/value pairs
+     */
+    testPrototypePatchAttributes(params: { "id": string; "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testPrototypePatchAttributes(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    testReplaceByIdPostTestsidReplace(params: { "id": string; "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testReplaceByIdPostTestsidReplace(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    testReplaceByIdPutTestsid(params: { "id": string; "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testReplaceByIdPutTestsid(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testReplaceOrCreatePostTestsReplaceOrCreate(params: { "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testReplaceOrCreatePostTestsReplaceOrCreate(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testReplaceOrCreatePutTests(params: { "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testReplaceOrCreatePutTests(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Update instances of the model matched by {{where}} from the data source.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    testUpdateAll(params: { "where"?: string; "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2004> {
+        const fetchArgs = TestApiFetchParamCreator.testUpdateAll(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     * 
+     * @summary Update an existing model instance or insert a new one into the data source based on the where criteria.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    testUpsertWithWhere(params: { "where"?: string; "data"?: Test;  }, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Test> {
+        const fetchArgs = TestApiFetchParamCreator.testUpsertWithWhere(params, options);
+        return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        };
+    },
+};
+
+/**
+ * TestApi - object-oriented interface
+ */
+export class TestApi extends BaseAPI {
+    /**
+     * 
+     * @summary Count instances of the model matched by where from the data source.
+     * @param where Criteria to match model instances
+     */
+    testCount(params: {  "where"?: string; }, options?: any) {
+        return TestApiFp.testCount(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Create a new instance of the model and persist it into the data source.
+     * @param data Model instance data
+     */
+    testCreate(params: {  "data"?: Test; }, options?: any) {
+        return TestApiFp.testCreate(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Create a change stream.
+     * @param options 
+     */
+    testCreateChangeStreamGetTestsChangeStream(params: {  "options"?: string; }, options?: any) {
+        return TestApiFp.testCreateChangeStreamGetTestsChangeStream(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Create a change stream.
+     * @param options 
+     */
+    testCreateChangeStreamPostTestsChangeStream(params: {  "options"?: string; }, options?: any) {
+        return TestApiFp.testCreateChangeStreamPostTestsChangeStream(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Delete a model instance by {{id}} from the data source.
+     * @param id Model id
+     */
+    testDeleteById(params: {  "id": string; }, options?: any) {
+        return TestApiFp.testDeleteById(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    testExistsGetTestsidExists(params: {  "id": string; }, options?: any) {
+        return TestApiFp.testExistsGetTestsidExists(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    testExistsHeadTestsid(params: {  "id": string; }, options?: any) {
+        return TestApiFp.testExistsHeadTestsid(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Find all instances of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    testFind(params: {  "filter"?: string; }, options?: any) {
+        return TestApiFp.testFind(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Find a model instance by {{id}} from the data source.
+     * @param id Model id
+     * @param filter Filter defining fields and include - must be a JSON-encoded string ({\&quot;something\&quot;:\&quot;value\&quot;})
+     */
+    testFindById(params: {  "id": string; "filter"?: string; }, options?: any) {
+        return TestApiFp.testFindById(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Find first instance of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    testFindOne(params: {  "filter"?: string; }, options?: any) {
+        return TestApiFp.testFindOne(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Patch an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testPatchOrCreate(params: {  "data"?: Test; }, options?: any) {
+        return TestApiFp.testPatchOrCreate(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Patch attributes for a model instance and persist it into the data source.
+     * @param id Test id
+     * @param data An object of model property name/value pairs
+     */
+    testPrototypePatchAttributes(params: {  "id": string; "data"?: Test; }, options?: any) {
+        return TestApiFp.testPrototypePatchAttributes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    testReplaceByIdPostTestsidReplace(params: {  "id": string; "data"?: Test; }, options?: any) {
+        return TestApiFp.testReplaceByIdPostTestsidReplace(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    testReplaceByIdPutTestsid(params: {  "id": string; "data"?: Test; }, options?: any) {
+        return TestApiFp.testReplaceByIdPutTestsid(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testReplaceOrCreatePostTestsReplaceOrCreate(params: {  "data"?: Test; }, options?: any) {
+        return TestApiFp.testReplaceOrCreatePostTestsReplaceOrCreate(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    testReplaceOrCreatePutTests(params: {  "data"?: Test; }, options?: any) {
+        return TestApiFp.testReplaceOrCreatePutTests(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Update instances of the model matched by {{where}} from the data source.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    testUpdateAll(params: {  "where"?: string; "data"?: Test; }, options?: any) {
+        return TestApiFp.testUpdateAll(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     * 
+     * @summary Update an existing model instance or insert a new one into the data source based on the where criteria.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    testUpsertWithWhere(params: {  "where"?: string; "data"?: Test; }, options?: any) {
+        return TestApiFp.testUpsertWithWhere(params, options)(this.fetch, this.basePath);
+    }
+};
+
+/**
+ * TestApi - factory interface
+ */
+export const TestApiFactory = function (fetch?: FetchAPI, basePath?: string) {
+    return {
+        /**
+         * 
+         * @summary Count instances of the model matched by where from the data source.
+         * @param where Criteria to match model instances
+         */
+        testCount(params: {  "where"?: string; }, options?: any) {
+            return TestApiFp.testCount(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Create a new instance of the model and persist it into the data source.
+         * @param data Model instance data
+         */
+        testCreate(params: {  "data"?: Test; }, options?: any) {
+            return TestApiFp.testCreate(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Create a change stream.
+         * @param options 
+         */
+        testCreateChangeStreamGetTestsChangeStream(params: {  "options"?: string; }, options?: any) {
+            return TestApiFp.testCreateChangeStreamGetTestsChangeStream(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Create a change stream.
+         * @param options 
+         */
+        testCreateChangeStreamPostTestsChangeStream(params: {  "options"?: string; }, options?: any) {
+            return TestApiFp.testCreateChangeStreamPostTestsChangeStream(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Delete a model instance by {{id}} from the data source.
+         * @param id Model id
+         */
+        testDeleteById(params: {  "id": string; }, options?: any) {
+            return TestApiFp.testDeleteById(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Check whether a model instance exists in the data source.
+         * @param id Model id
+         */
+        testExistsGetTestsidExists(params: {  "id": string; }, options?: any) {
+            return TestApiFp.testExistsGetTestsidExists(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Check whether a model instance exists in the data source.
+         * @param id Model id
+         */
+        testExistsHeadTestsid(params: {  "id": string; }, options?: any) {
+            return TestApiFp.testExistsHeadTestsid(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Find all instances of the model matched by filter from the data source.
+         * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+         */
+        testFind(params: {  "filter"?: string; }, options?: any) {
+            return TestApiFp.testFind(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Find a model instance by {{id}} from the data source.
+         * @param id Model id
+         * @param filter Filter defining fields and include - must be a JSON-encoded string ({\&quot;something\&quot;:\&quot;value\&quot;})
+         */
+        testFindById(params: {  "id": string; "filter"?: string; }, options?: any) {
+            return TestApiFp.testFindById(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Find first instance of the model matched by filter from the data source.
+         * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+         */
+        testFindOne(params: {  "filter"?: string; }, options?: any) {
+            return TestApiFp.testFindOne(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Patch an existing model instance or insert a new one into the data source.
+         * @param data Model instance data
+         */
+        testPatchOrCreate(params: {  "data"?: Test; }, options?: any) {
+            return TestApiFp.testPatchOrCreate(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Patch attributes for a model instance and persist it into the data source.
+         * @param id Test id
+         * @param data An object of model property name/value pairs
+         */
+        testPrototypePatchAttributes(params: {  "id": string; "data"?: Test; }, options?: any) {
+            return TestApiFp.testPrototypePatchAttributes(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Replace attributes for a model instance and persist it into the data source.
+         * @param id Model id
+         * @param data Model instance data
+         */
+        testReplaceByIdPostTestsidReplace(params: {  "id": string; "data"?: Test; }, options?: any) {
+            return TestApiFp.testReplaceByIdPostTestsidReplace(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Replace attributes for a model instance and persist it into the data source.
+         * @param id Model id
+         * @param data Model instance data
+         */
+        testReplaceByIdPutTestsid(params: {  "id": string; "data"?: Test; }, options?: any) {
+            return TestApiFp.testReplaceByIdPutTestsid(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Replace an existing model instance or insert a new one into the data source.
+         * @param data Model instance data
+         */
+        testReplaceOrCreatePostTestsReplaceOrCreate(params: {  "data"?: Test; }, options?: any) {
+            return TestApiFp.testReplaceOrCreatePostTestsReplaceOrCreate(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Replace an existing model instance or insert a new one into the data source.
+         * @param data Model instance data
+         */
+        testReplaceOrCreatePutTests(params: {  "data"?: Test; }, options?: any) {
+            return TestApiFp.testReplaceOrCreatePutTests(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Update instances of the model matched by {{where}} from the data source.
+         * @param where Criteria to match model instances
+         * @param data An object of model property name/value pairs
+         */
+        testUpdateAll(params: {  "where"?: string; "data"?: Test; }, options?: any) {
+            return TestApiFp.testUpdateAll(params, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Update an existing model instance or insert a new one into the data source based on the where criteria.
+         * @param where Criteria to match model instances
+         * @param data An object of model property name/value pairs
+         */
+        testUpsertWithWhere(params: {  "where"?: string; "data"?: Test; }, options?: any) {
+            return TestApiFp.testUpsertWithWhere(params, options)(fetch, basePath);
         },
     };
 };

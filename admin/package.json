@@ -49,6 +49,7 @@
     "react-scripts": "^3.4.3",
     "react-toast-notifications": "^2.5.1",
     "react-transition-group": "^4.4.1",
+    "sass": "^1.55.0",
     "simplebar-react": "^2.3.0"
   },
   "scripts": {
