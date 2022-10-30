@@ -16,7 +16,7 @@ export default function Category() {
         <>
             <div className="categories">
                 <div className="small-container">
-                    <div className="row">
+                    <div className="row flex justify-between">
                         <div className="col-3">
                             <img src={Category1} />
                         </div>

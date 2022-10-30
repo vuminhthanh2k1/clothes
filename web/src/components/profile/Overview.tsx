@@ -69,16 +69,15 @@ export default function Overview() {
     return (
         <>
             <div className='overview'>
-                <form className='flex row'>
-                    <div className='item-input mb-4'>
-                        
-                        <label htmlFor="firstName"><b>Tên:</b></label>
+                <form className='flex flex-wrap w-full gap-y-2'>
+                    <label className='w-half flex flex-col mb-20'>
+                        Tên:
                         <Controller
                             control={control}
                             name="lastName"
                             render={({
                                 field: { onChange, onBlur, value }
-                            }) =>  (
+                            }) => (
                                 <input
                                     className={errors.lastName ? "errorInput item-info " : "item-info"}
                                     type="text"
@@ -90,10 +89,9 @@ export default function Overview() {
                             rules={{ required: true }}
                             defaultValue={user?.lastName}
                         />
-                    </div>
-                    <div className='item-input mb-4'>
-                    <label htmlFor="lastName"><b>Họ:</b></label>
-
+                    </label>
+                    <label className='w-half flex flex-col mb-20'>
+                        Họ:
                         <Controller
                             control={control}
                             name="firstName"
@@ -108,13 +106,12 @@ export default function Overview() {
                                     value={value}
                                 />
                             )}
-
                             rules={{ required: true }}
                             defaultValue={user?.firstName}
                         />
-                    </div>
-                    <div className='item-input mb-4'>
-                        <label htmlFor="email"><b>Email:</b></label>
+                    </label>
+                    <label className='w-half flex flex-col mb-20'>
+                        Email:
                         <Controller
                             control={control}
                             name="email"
@@ -132,9 +129,9 @@ export default function Overview() {
                             rules={{ required: true }}
                             defaultValue={user?.email}
                         />
-                    </div>
-                    <div className='item-input mb-4'>
-                        <label htmlFor="phoneNumber"><b>Số điện thoại:</b></label>
+                    </label>
+                    <label className='w-half flex flex-col mb-20'>
+                        Số điện thoại:
                         <Controller
                             control={control}
                             name="phoneNumber"
@@ -152,8 +149,8 @@ export default function Overview() {
                             rules={{ required: true }}
                             defaultValue={user?.phoneNumber}
                         />
-                    </div>
-                    <div className='item-input' style={{ display: 'flex', justifyContent: 'space-between' }} >
+                    </label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '50%', paddingRight: 38 }} >
                         <label htmlFor="username"><b>Tỉnh/Thành phố:</b></label>
                         <select
                             onChange={e => handleSelectCity(e)}
@@ -167,7 +164,7 @@ export default function Overview() {
                             })}
                         </select>
                     </div>
-                    <div  className='item-input' style={{ display: 'flex', justifyContent: 'space-between' }} >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '50%', paddingRight: 38 }} >
                         <label htmlFor="username"><b>Huyện:</b></label>
                         <select
                             onChange={e => handleSelectDistrict(e)}
@@ -183,9 +180,9 @@ export default function Overview() {
                     </div>
                 </form>
                 <div>
-                    <button className='update-info mt-16' onClick={handleSubmit(changeProfile)}>
+                    <div className='update-info mt-16' onClick={handleSubmit(changeProfile)}>
                         Update
-                    </button>
+                    </div>
                 </div>
             </div>
         </>

@@ -82,8 +82,8 @@ export default function Footer() {
               <h3>Download Our App</h3>
               <p>Download App for Android and ios mobile phone</p>
               <div className="app-logo">
-                <img src={Playstore} />
-                <img src={Appstore} />
+                <img src={Playstore} alt="" className="mr-10"/>
+                <img src={Appstore} alt="" />
               </div>
             </div>
             <div className="footer-col-2">

@@ -17,7 +17,7 @@ export default function Brands() {
         <>
             <div className="brands">
                 <div className="small-container">
-                    <div className="row">
+                    <div className="row flex justify-between">
                         <div className="col-5">
                             <img src={Logo1} />
                         </div>

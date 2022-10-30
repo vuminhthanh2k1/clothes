@@ -50,7 +50,7 @@ export default function ForgotPassWord() {
                         check ?
                             <div className="wrap__form">
                                 <form method="get">
-                                    <div className="wthree-text ">
+                                    <div className="wthree-text mt-10 flex justify-center mb-4">
                                         <label className="anim">
                                             <span className="">Để thực hiện việc reset lại mật khẩu, bạn hãy nhập email đăng ký vào ô dưới</span>
                                         </label>

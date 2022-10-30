@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
-// import '../assets/css/signin.scss';
+import '../assets/css/signin.scss';
 import { apiUrl } from '../enviroments';
 import { Routes } from '../routes';
 export default function Signup() {
@@ -71,7 +71,7 @@ export default function Signup() {
                         Đăng ký
                     </h1>
                     <div className="wrap__form">
-                        <form method="get">
+                        <form method="get" className='flex flex-col justify-center'>
                             <label htmlFor="username"><b>Tên</b></label>
                             <Controller
                                 control={control}
@@ -80,7 +80,7 @@ export default function Signup() {
                                     field: { onChange, onBlur, value }
                                 }) => (
                                     <input
-                                        className={errors.username ? "errorInput text w3lpass" : "text w3lpass"}
+                                        className={errors.username ? "errorInput mt-15 text w3lpass" : "mt-15 text w3lpass"}
                                         type="text"
                                         name="username"
                                         placeholder='username'
@@ -99,7 +99,7 @@ export default function Signup() {
                                     field: { onChange, onBlur, value }
                                 }) => (
                                     <input
-                                        className={errors.username ? "errorInput text w3lpass" : "text w3lpass"}
+                                        className={errors.username ? "errorInput mt-15 text w3lpass" : "mt-15 text w3lpass"}
                                         type="text"
                                         name="username"
                                         placeholder='username'
@@ -149,7 +149,7 @@ export default function Signup() {
                                     field: { onChange, onBlur, value }
                                 }) => (
                                     <input
-                                        className={errors.username ? "errorInput text w3lpass" : "text w3lpass"}
+                                        className={errors.username ? "errorInput mt-15 text w3lpass" : "mt-15 text w3lpass"}
                                         type="text"
                                         name="phoneNumber"
                                         placeholder='Phone Number'
@@ -168,7 +168,7 @@ export default function Signup() {
                                     field: { onChange, onBlur, value }
                                 }) => (
                                     <input
-                                        className={errors.username ? "errorInput text w3lpass" : "text w3lpass"}
+                                        className={errors.username ? "errorInput mt-15 text w3lpass" : "mt-15 text w3lpass"}
                                         type="text"
                                         name="username"
                                         placeholder='username'
@@ -187,7 +187,7 @@ export default function Signup() {
                                     field: { onChange, onBlur, value }
                                 }) => (
                                     <input
-                                        className={errors.username ? "errorInput text w3lpass" : "text w3lpass"}
+                                        className={errors.username ? "errorInput mt-15 text w3lpass" : "mt-15 text w3lpass"}
                                         type="email"
                                         name="email"
                                         placeholder="Email"
@@ -207,7 +207,7 @@ export default function Signup() {
                                     field: { onChange, onBlur, value }
                                 }) => (
                                     <input
-                                        className={errors.username ? "errorInput text w3lpass" : "text w3lpass"}
+                                        className={errors.username ? "errorInput mt-15 text w3lpass" : "mt-15 text w3lpass"}
                                         type="password"
                                         name="password"
                                         placeholder="Password"
@@ -226,7 +226,7 @@ export default function Signup() {
                                     field: { onChange, onBlur, value }
                                 }) => (
                                     <input
-                                        className={errors.username ? "errorInput text w3lpass" : "text w3lpass"}
+                                        className={errors.username ? "errorInput mt-15 text w3lpass" : "mt-15 text w3lpass"}
                                         type="password"
                                         name="password"
                                         placeholder="Password"
@@ -238,18 +238,18 @@ export default function Signup() {
                                 rules={{ required: true }}
                             />
                             <div className="flex justify-between mt-2">
-                                <div className="wthree-text ">
-                                    <label className="anim">
+                                <div className="wthree-text">
+                                    <label className="anim flex items-center">
                                         <input type="checkbox" className="checkbox mr-2" onChange={() => setCheck(!check)} />
                                         <span className="">Tôi đồng ý với các điều khoản & điều kiện</span>
                                     </label>
                                     <div className="clear"></div>
                                 </div>
-                                <a className='login-btn flex items-center' href='/login'>
+                                <a className='signin-btn flex items-center' href='/login'>
                                     <span>Đăng nhập</span>
                                 </a>
                             </div>
-                            <button onClick={handleSubmit(signup)} className="submit-btn">Đăng ký</button>
+                            <button onClick={handleSubmit(signup)} className="alazea-btn mx-auto submit-btn">Đăng ký</button>
                         </form>
                     </div>
                 </div>

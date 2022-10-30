@@ -44,40 +44,44 @@ export default function Profile() {
         <>
             <Header />
 
-            <section className="container my-20">
-                <div className="prof flex gap-10">
-                    <div className="prof__left w-1/3 flex flex-col items-center">
+            <section className="container px-50">
+                <div className="prof flex">
+                    <div className="prof__left flex flex-col items-center">
                         <div className="prof__left--top flex items-center flex-col">
-                            <div className="avatar w-32 h-32 rounded-full overflow-hidden">
-                                {!user?.avatar ? <img src={avatarDefault} alt="" /> : <img src={user?.avatar} alt="" />}
+                            <div className="avatar rounded-full overflow-hidden">
+                                {/* {!user?.avatar ? <img src={avatarDefault} alt="" /> : <img src={user?.avatar} alt="" />} */}
+                                <img src={avatarDefault} alt="" />
                             </div>
-                            <input type="file" name="file" id="file" className="inputfile" onChange={(e: any) => { changeAvatar(e.target.files[0]) }} />
-                            {/* <label htmlFor="file" className="edit-avatar">Thay đổi avatar</label> */}
-                            <h1 className="text-2xl mt-4 text-center">{user?.firstName} {user?.lastName}</h1>
+                            <input type="file" name="file" id="file" className="inputfile mt-10 pl-50" onChange={(e: any) => { changeAvatar(e.target.files[0]) }} />
+                            <label htmlFor="file" className="edit-avatar">Thay đổi avatar</label>
+                            <h1 className="text-2xl mt-15 text-center">
+                                {/* {user?.firstName} {user?.lastName} */}
+                                Bui Thang
+                            </h1>
                         </div>
                         <div className="prof__left--bottom">
-                            <ul className="flex p-0 flex-col items-center">
-                                <div className="distance-line"></div>
-
+                            {/* <ul className="flex p-0 flex-col items-center">
                                 <li className="prof__left--item text-xl text-center" onClick={() => {
                                     setStatus("Tổng quan")
                                 }
                                 } >
                                     <b>Tổng quan</b>
                                 </li>
-                                <div className="distance-line"></div>
                                 <li className="prof__left--item text-xl text-center" onClick={() => setStatus("Thay đổi mật khẩu")}>
                                     <b>Thay đổi mật khẩu</b>
                                 </li>
                                 <div className="distance-line"></div>
 
+                            </ul> */}
+                            <ul className="flex p-0 flex-col items-center">
+                                <li className="prof__left--item text-xl text-center" onClick={() => setStatus("Tổng quan")} >Tổng quan</li>
+                                <li className="prof__left--item text-xl text-center" onClick={() => setStatus("Thay đổi mật khẩu")}>Thay đổi mật khẩu</li>
                             </ul>
                         </div>
                     </div>
-                    <div className="prof__right w-2/3">
+                    <div className="prof__right pl-50">
                         <div>
                             {status == 'Tổng quan' && <Overview />}
-
                             {status == 'Thay đổi mật khẩu' && <ResetPass />}
                         </div>
                     </div>

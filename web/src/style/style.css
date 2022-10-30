@@ -4,8 +4,10 @@
   box-sizing: border-box;
 }
 
-body{
-  font-family: 'Poppins', sans-serif;
+body {
+  font-family: "Dosis", sans-serif !important;
+  font-size: 16px;
+  color: #707070;
 }
 
 .navbar{

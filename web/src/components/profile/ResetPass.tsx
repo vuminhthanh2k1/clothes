@@ -30,9 +30,9 @@ export default function ResetPass() {
     return (
         <>
 
-            <div>
+            <div className='reset-pass'>
                 <form className='flex flex-col w-full gap-y-2'>
-                    <label className='w-1/2 mb-20'>
+                    <label className='w-half mb-20'>
                         Nhập mật khẩu cũ:
                         <Controller
                             control={control}
@@ -50,8 +50,8 @@ export default function ResetPass() {
                             rules={{ required: true }}
                         />
                     </label>
-                    <label className='w-1/2 mb-20'>
-                        Nhập mật khẩu mới:
+                    <label className='w-half mb-20'>
+                        Nhật mật khẩu mới:
                         <Controller
                             control={control}
                             name="newPassword"
@@ -68,7 +68,7 @@ export default function ResetPass() {
                             rules={{ required: true }}
                         />
                     </label>
-                    <label className='w-1/2 mb-20'>
+                    <label className='w-half mb-20'>
                         Nhập lại mật khẩu mới:
                         <Controller
                             control={control}

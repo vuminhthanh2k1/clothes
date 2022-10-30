@@ -16,7 +16,7 @@ export default function Testimonial() {
         <>
             <div className="testimonial">
                 <div className="small-container">
-                    <div className="row">
+                    <div className="row flex justify-between">
                         <div className="col-3">
                             <i className="fa fa-qoute-lef" />
                             <p>Abilities or he perfectly pretended so strangers be exquisite. Oh to another chamber pleased
