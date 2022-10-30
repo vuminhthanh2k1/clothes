@@ -114,25 +114,44 @@ export default function Header(data: any) {
   return (
     <>
       <div className="header">
-        <div className="container">
-          <div className="navbar">
+        <div className="container h-full">
+          <div className="navbar flex justify-between h-full">
             <div className="logo">
               <a href="/"><img src={Logo} width="125px" /></a>
             </div>
-            <nav>
-              <ul id="MenuItems">
-                <li><a href="/">Home</a></li>
-                <li><a href="/shop">Products</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/profile">Account</a></li>
-              </ul>
-            </nav>
-            <a href="/cart"><img src={Cart} width="30px" height="30px" /></a>
+            <ul id="MenuItems" className='flex items-center h-full'>
+              <li><a href="/">Trang chủ</a></li>
+              <li><a href="/shop">Sản phẩm</a></li>
+              <li><a href="/blog">Bài viết</a></li>
+              <li><a href="/about">Về chúng tôi</a></li>
+              <li>
+                <a href="/contact">Liên hệ</a>
+
+              </li>
+              <li className='account-header'>
+                <a href="/profile">Tài khoản</a>
+                <div >
+                  <div className='sub-account'>
+                    <div className='item-sub'>
+                      Thông tin cá nhân
+                    </div>
+                    <div className='item-sub'>
+                      Đơn hàng của tôi
+                    </div>
+                    <div className='item-sub'>
+                      Đăng xuất
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="/cart"><img src={Cart} width="30px" height="30px" /></a>
+              </li>
+            </ul>
+
             <img src={Menu} className="menu-icon" />
           </div>
-          
+
         </div>
       </div>
 

@@ -82,8 +82,46 @@ export default function Footer() {
               <h3>Download Our App</h3>
               <p>Download App for Android and ios mobile phone</p>
               <div className="app-logo">
-                <img src={Playstore} alt="" className="mr-10"/>
+                <img src={Playstore} alt="" className="mr-10" />
                 <img src={Appstore} alt="" />
+              </div>
+              <div>
+                <div className="">
+                  <Button variant="primary" className="feedback-btn mt-4 mx-auto" onClick={handleShow}>
+                    Feedback
+                  </Button>
+                </div>
+
+                <Modal className="wrap-modal" show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Hãy cho chúng tôi biết về trải nghiệm của bạn</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Controller
+                      control={control}
+                      name="content"
+                      render={({
+                        field: { onChange, onBlur, value }
+                      }) => (
+                        <textarea
+                          className="feedback-text w-full min-h-28"
+                          id="contact-name"
+                          placeholder="Nhập phản hồi..."
+                          onChange={e => onChange(e.target.value)}
+                          onBlur={onBlur}
+                        />
+                      )}
+                    />
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Đóng
+                    </Button>
+                    <Button variant="primary" onClick={handleSubmit(feedback)}>
+                      Gửi phản hồi
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             </div>
             <div className="footer-col-2">

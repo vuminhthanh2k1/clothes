@@ -694,6 +694,10 @@ form {
 .w-half{
 	width: calc(100%/2);
 }
+.h-full{
+	height: 100%;
+}
+
 
 //css bonus
 img{
@@ -964,7 +968,13 @@ img{
 	}
 }
 .header{
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	height: 85px;
 	li{
+		padding: 0 20px;
+		&:last-child{
+			padding-right: 0 !important;		
+		}
 		a{
 			&:hover{
 			color: #ff523B;
@@ -972,8 +982,51 @@ img{
 		}
 		
 	}
+	#MenuItems{
+		display: flex;
+		justify-content: end;
+		height: 100% !important;
+		li{
+			height: 100%;
+			display: flex;
+			align-items: center;
+		}
+	}
 }
-
+.account-header{
+	position: relative;
+	&:hover{
+		.sub-account{
+			display: flex;
+			transition: .5s;
+		}
+	}
+	.sub-account{
+		position: absolute;
+		width: 150px;
+		display: flex;
+		flex-direction: column;
+		top: 45px;
+		left: -20px;
+		padding: 20px 0;
+		background-color: #fff;
+		display: none;
+		transition: .5s;
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+		.item-sub{
+			text-align: center;
+			padding: 3px 10px;
+			margin: 3px 0;
+			cursor: pointer;
+			transition: .3s;
+			&:hover{
+				color: #fff;
+				transition: .3s;
+				background-color: #ff523B;
+			}
+		}
+	}
+}
 
 //PROFILE
 .prof__left{
