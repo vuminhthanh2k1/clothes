@@ -38,7 +38,7 @@ module.exports = function (app: App) {
       });
     });
   };
-  // return;
+  return;
   // auto update
 
   (async () => {
@@ -77,11 +77,11 @@ module.exports = function (app: App) {
       ].map(
         process.env.NODE_ENV === 'production'
           ? autoupdate('postgres')
-          : autoupdate('postgres'),
+          : automigrate('postgres'),
       ),
     );
 
-    return;
+    // return;
     if (process.env.NODE_ENV === 'production') {
       return;
     }
@@ -139,11 +139,11 @@ module.exports = function (app: App) {
 
     accounts.push({
       id: 4,
-      username: `hoangminh`,
-      email: 'hoangminh@bfast-vn.net',
+      username: `minhthanh`,
+      email: 'minhthanh@bfast-vn.net',
       password: '1',
-      firstName: 'Hoang',
-      lastName: 'Minh',
+      firstName: 'Vu Minh',
+      lastName: 'Thanh',
       city: 1,
       district: 1,
       phoneNumber: 123456789
@@ -152,11 +152,11 @@ module.exports = function (app: App) {
 
     accounts.push({
       id: 5,
-      username: `trung`,
-      email: 'trung@bfast-vn.net',
+      username: `thanh`,
+      email: 'thanh@bfast-vn.net',
       password: '1',
-      firstName: 'Nguyen',
-      lastName: 'Trung',
+      firstName: 'Minh',
+      lastName: 'Thanh',
       city: 1,
       district: 1,
       phoneNumber: 123456789

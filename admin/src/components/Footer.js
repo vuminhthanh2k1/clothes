@@ -64,7 +64,7 @@ export default (props) => {
             <p className="mb-0 text-center text-xl-left">
               Copyright © 2019-{`${currentYear} `}
               <Card.Link href="http://18pride.com" target="_blank" className="text-blue text-decoration-none fw-normal">
-                Shoes
+                Clothes
               </Card.Link>
             </p>
           </Col>
