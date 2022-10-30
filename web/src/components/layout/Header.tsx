@@ -129,17 +129,23 @@ export default function Header(data: any) {
 
               </li>
               <li className='account-header'>
-                <a href="/profile">Tài khoản</a>
+                <a >Tài khoản</a>
                 <div >
                   <div className='sub-account'>
                     <div className='item-sub'>
-                      Thông tin cá nhân
+                      <a href="/profile">
+                        Thông tin cá nhân
+                      </a>
                     </div>
                     <div className='item-sub'>
-                      Đơn hàng của tôi
+                      <a href="/profile">
+                        Đơn hàng của tôi
+                      </a>
                     </div>
                     <div className='item-sub'>
-                      Đăng xuất
+                      <a href=''>
+                        Đăng xuất
+                      </a>
                     </div>
                   </div>
                 </div>

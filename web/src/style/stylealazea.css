@@ -340,7 +340,7 @@ img {
     position: relative;
     z-index: 1;
     display: inline-block;
-    width: 130px;
+    min-width: 130px;
     height: 46px;
     color: #ffffff;
     background-color: #ff523b;

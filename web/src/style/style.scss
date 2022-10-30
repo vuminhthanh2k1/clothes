@@ -995,6 +995,7 @@ img{
 }
 .account-header{
 	position: relative;
+	cursor: pointer;
 	&:hover{
 		.sub-account{
 			display: flex;
@@ -1004,6 +1005,7 @@ img{
 	.sub-account{
 		position: absolute;
 		width: 150px;
+		z-index: 999;
 		display: flex;
 		flex-direction: column;
 		top: 45px;
@@ -1020,9 +1022,16 @@ img{
 			cursor: pointer;
 			transition: .3s;
 			&:hover{
-				color: #fff;
 				transition: .3s;
 				background-color: #ff523B;
+				a{
+					color: #fff;
+				}
+			}
+			a{
+				font-size: 16px !important;
+				color: #555555;
+
 			}
 		}
 	}
