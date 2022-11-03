@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './style/style.css';
 import './style/stylealazea.css';
-// import './assets/css/bootstrap.css'
 import './assets/css/flickity.css'
 import './assets/css/sign.css.map'
 import './assets/css/sign.css'

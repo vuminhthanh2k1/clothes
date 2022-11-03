@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import { Controller, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { apiUrl } from "../../enviroments";
-import Playstore from '../../assets/images/play-store.png'
-import Appstore from '../../assets/images/app-store.png'
-import LogoWhite from '../../assets/images/logo-white.png'
+import Playstore from "../../assets/images/play-store.png";
+import Appstore from "../../assets/images/app-store.png";
+import LogoWhite from "../../assets/images/logo-white.png";
 
 const access_token = localStorage.getItem("token");
 export default function Footer() {
@@ -22,59 +22,32 @@ export default function Footer() {
   let feedback = async (form: any) => {
     if (user) {
       axios({
-        method: 'POST',
+        method: "POST",
         url: `${apiUrl}/Feedbacks`,
         params: {
-          access_token: access_token
+          access_token: access_token,
         },
         data: {
-          content: form.content, accountId: user.id
-        }
+          content: form.content,
+          accountId: user.id,
+        },
       })
         .then(() => {
-          addToast("Success", { appearance: 'success', autoDismiss: true });
+          addToast("Success", { appearance: "success", autoDismiss: true });
           handleClose();
         })
         .catch(function (error) {
-          console.log(error)
-        })
+          console.log(error);
+        });
     } else {
-      addToast("Bạn cần đăng nhập", { appearance: 'warning', autoDismiss: true });
+      addToast("Bạn cần đăng nhập", {
+        appearance: "warning",
+        autoDismiss: true,
+      });
     }
-
-  }
+  };
   return (
     <>
-      {/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Hãy cho chúng tôi biết về trải nghiệm của bạn</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Controller
-            control={control}
-            name="content"
-            render={({
-              field: { onChange, onBlur, value }
-            }) => (
-              <textarea
-                className="feedback-text w-full min-h-28"
-                id="contact-name"
-                placeholder="Nhập phản hồi..."
-                onChange={e => onChange(e.target.value)}
-                onBlur={onBlur}
-              />
-            )}
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Đóng
-          </Button>
-          <Button variant="primary" onClick={handleSubmit(feedback)}>
-            Gửi phản hồi
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
       <div className="footer">
         <div className="container">
           <div className="row">
@@ -87,37 +60,53 @@ export default function Footer() {
               </div>
               <div>
                 <div className="">
-                  <Button variant="primary" className="feedback-btn mt-4 mx-auto" onClick={handleShow}>
+                  <Button
+                    variant="primary"
+                    className="feedback-btn mt-4 mx-auto"
+                    onClick={handleShow}
+                    style={{ cursor: "pointer" }}
+                  >
                     Feedback
                   </Button>
                 </div>
 
                 <Modal className="wrap-modal" show={show} onHide={handleClose}>
                   <Modal.Header closeButton>
-                    <Modal.Title>Hãy cho chúng tôi biết về trải nghiệm của bạn</Modal.Title>
+                    <Modal.Title>
+                      Hãy cho chúng tôi biết về trải nghiệm của bạn
+                    </Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                     <Controller
                       control={control}
                       name="content"
-                      render={({
-                        field: { onChange, onBlur, value }
-                      }) => (
+                      render={({ field: { onChange, onBlur, value } }) => (
                         <textarea
-                          className="feedback-text w-full min-h-28"
+                          className="form-control"
+                          name="message"
+                          cols={30}
+                          rows={5}
                           id="contact-name"
                           placeholder="Nhập phản hồi..."
-                          onChange={e => onChange(e.target.value)}
+                          onChange={(e) => onChange(e.target.value)}
                           onBlur={onBlur}
                         />
                       )}
                     />
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button
+                      variant="secondary"
+                      onClick={handleClose}
+                      style={{ cursor: "pointer" }}
+                    >
                       Đóng
                     </Button>
-                    <Button variant="primary" onClick={handleSubmit(feedback)}>
+                    <Button
+                      variant="primary"
+                      onClick={handleSubmit(feedback)}
+                      style={{ cursor: "pointer" }}
+                    >
                       Gửi phản hồi
                     </Button>
                   </Modal.Footer>
@@ -126,8 +115,10 @@ export default function Footer() {
             </div>
             <div className="footer-col-2">
               <img src={LogoWhite} />
-              <p>Our Purpose Is To Sustainably Make the Pleasure and
-                Benefits of Sports Accessible to the Many</p>
+              <p>
+                Our Purpose Is To Sustainably Make the Pleasure and Benefits of
+                Sports Accessible to the Many
+              </p>
             </div>
             <div className="footer-col-3">
               <h3>Useful Links</h3>
@@ -148,11 +139,8 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <hr />
-          <p className="Copyright">Copyright 2020 - By Bui Thang</p>
         </div>
       </div>
-
     </>
-  )
+  );
 }
