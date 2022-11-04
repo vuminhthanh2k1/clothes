@@ -1,72 +1,58 @@
-import axios from "axios";
-import { useState } from "react";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { Controller, useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
-import { useToasts } from "react-toast-notifications";
-import { apiUrl } from "../../enviroments";
 // const access_token = localStorage.getItem("token");
-import Product1 from '../../assets/images/product-1.jpg'
-import Product2 from '../../assets/images/product-4.jpg'
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { request } from "../../helper/request.helper";
+import { ProductInterface } from "../../models/product.interface";
+import { Routes } from "../../routes";
 export default function FeaturedProduct() {
-
-    return (
-        <>
-            <div className="small-container">
-                <h2 className="title">Featured Products</h2>
-                <div className="row">
-                    <div className="col-4">
-                        <a ><img src={Product1} /></a>
-                        <h4 className="name-product">Red Printed T-Shirt</h4>
-                        <div className="rating">
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star-o" />
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div className="col-4">
-                        <img src={Product2} />
-                        <h4 className="name-product">Red Printed T-Shirt</h4>
-                        <div className="rating">
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star-half-o" />
-                            <i className="fa fa-star-o" />
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div className="col-4">
-                        <img src={Product1} />
-                        <h4 className="name-product">Red Printed T-Shirt</h4>
-                        <div className="rating">
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star-half-o" />
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div className="col-4">
-                        <img src={Product2} />
-                        <h4 className="name-product">Red Printed T-Shirt</h4>
-                        <div className="rating">
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star" />
-                            <i className="fa fa-star-o" />
-                        </div>
-                        <p>$50.00</p>
-                    </div>
+  const [products, setProducts] = useState({
+    total: 0,
+    data: [],
+  });
+  const history = useHistory();
+  useEffect(() => {
+    request({
+      method: "GET",
+      url: "Products",
+      params: {
+        filter: {
+          order: "price ASC",
+          limit: 4,
+        },
+      },
+    }).then((result) => setProducts(result.data));
+  }, []);
+  const currencyFormat = (num: any) => {
+    return num?.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " VNĐ";
+  };
+  let routerProductDetail = (productItem: ProductInterface) => {
+    history.push({
+      pathname: Routes.ShopDetails.path,
+      state: productItem?.id,
+    });
+  };
+  return (
+    <>
+      <div className="small-container">
+        <h2 className="title">Sản phẩm bán chạy nhất</h2>
+        <div className="row">
+          {products.data.map((el: ProductInterface, index: number) => {
+            return (
+              <div
+                className="col-4"
+                onClick={() => routerProductDetail(el)}
+                key={index}
+              >
+                <div>
+                  <img src={el.photoURL} alt="" />
                 </div>
-            </div>
-
-        </>
-    )
+                <h4 className="name-product">{el.title}</h4>
+                <p>{currencyFormat(el.price)}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
 }

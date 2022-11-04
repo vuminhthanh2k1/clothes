@@ -100,8 +100,8 @@ export default () => {
                 <tr>
                   <th className="border-bottom">#</th>
                   <th className="border-bottom">Tiêu đề</th>
-                  <th className="border-bottom">Màu sắc</th>
                   <th className="border-bottom">Giá</th>
+                  <th className="border-bottom">Màu sắc</th>
                   <th className="border-bottom">Xuất xứ</th>
                   <th className="border-bottom">Hình ảnh</th>
                   <th className="border-bottom">Cài đặt</th>

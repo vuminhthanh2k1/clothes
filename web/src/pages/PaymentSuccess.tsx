@@ -43,26 +43,28 @@ export default function PaymentSuccess() {
     <>
       <Header />
       <div style={{ background: "#f7f7f7" }} className="p-5">
-        <h3 className="text-center">Thanh toán thành công</h3>
+        <h3 className="text-center" style={{ padding: 30 }}>
+          Thanh toán thành công
+        </h3>
         <div className="flex justify-content-center">
           <img src={icon} alt="" width={150} />
         </div>
-        <h3 className="text-center">Thông tin giao dịch</h3>
+        <h3 className="text-center" style={{ padding: 30 }} >Thông tin giao dịch</h3>
         <div className="flex justify-content-center mt-3">
           <ul className="w-50">
-            <li className="flex justify-content-between mt-4">
+            <li className="flex justify-content-between mt-4" style={{ padding: 20 }}>
               <label htmlFor="">Ngân hàng:</label>
               <div>NCB - Ngân hàng TMCP Quốc Dân</div>
             </li>
-            <li className="flex justify-content-between mt-4">
+            <li className="flex justify-content-between mt-4" style={{ padding: 20 }}>
               <label htmlFor="">Mã giao dịch:</label>
               <div>{vnp_BankTranNo}</div>
             </li>
-            <li className="flex justify-content-between mt-4">
+            <li className="flex justify-content-between mt-4" style={{ padding: 20 }}>
               <label htmlFor="">Số tiền:</label>
               <div>{currencyFormat(Number(vnp_Amount) / 100)}</div>
             </li>
-            <li className="flex justify-content-between mt-4">
+            <li className="flex justify-content-between mt-4" style={{ padding: 20 }}>
               <label htmlFor="">Nội dung:</label>
               <div>{vnp_OrderInfo}</div>
             </li>

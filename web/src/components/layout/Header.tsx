@@ -136,7 +136,7 @@ export default function Header(data: any) {
                           <a href="/profile">Thông tin cá nhân</a>
                         </div>
                         <div className="item-sub">
-                          <a href="/profile">Đơn hàng của tôi</a>
+                          <a href={Routes.Order.path}>Đơn hàng của tôi</a>
                         </div>
                         <div className="item-sub">
                           <a

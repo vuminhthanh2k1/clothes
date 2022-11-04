@@ -1,4 +1,5 @@
 export interface CategoryProductInterface {
   id: number,
-  title: string
+  title: string,
+  photoURL:string
 }

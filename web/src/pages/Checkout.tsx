@@ -306,52 +306,35 @@ export default function Checkout() {
                 <div className="products">
                   <div className="products-data">
                     <h5>Sản phẩm:</h5>
-                    {/* {data?.orderProducts?.map(
+                    {data?.orderProducts?.map(
                       (orderProduct: OrderProductInterface, index: number) => {
                         return (
-                          
+                          <div
+                            key={index}
+                            className="single-products flex justify-between items-center mt-10"
+                          >
+                            <div>
+                              {orderProduct.product.title} x{" "}
+                              {orderProduct.amount}
+                            </div>
+                            <div className="font-bold">
+                              {currencyFormat(
+                                Number(
+                                  orderProduct.amount *
+                                    orderProduct.product.price
+                                )
+                              )}
+                            </div>
+                          </div>
                         );
                       }
-                    )} */}
-                    <div className="single-products flex justify-between items-center mt-10">
-                      <div>
-                        {/* {orderProduct.product.title} x{" "}
-                              {orderProduct.amount} */}
-                        ABC x 4
-                      </div>
-                      <div className="font-bold">
-                        {/* {currencyFormat(
-                                Number(
-                                  orderProduct.amount *
-                                    orderProduct.product.price
-                                )
-                              )} */}
-                        50$
-                      </div>
-                    </div>
-                    <div className="single-products flex justify-between items-center mt-10">
-                      <div>
-                        {/* {orderProduct.product.title} x{" "}
-                              {orderProduct.amount} */}
-                        ABC x 4
-                      </div>
-                      <div className="font-bold">
-                        {/* {currencyFormat(
-                                Number(
-                                  orderProduct.amount *
-                                    orderProduct.product.price
-                                )
-                              )} */}
-                        50$
-                      </div>
-                    </div>
+                    )}
                   </div>
                 </div>
                 <div className="order-total flex justify-between items-center mt-10">
                   <div>Tổng tiền</div>
                   <div className="font-bold">
-                    {/* {currencyFormat(Number(data?.price))} */}
-                    200$
+                    {currencyFormat(Number(data?.price))}
                   </div>
                 </div>
                 <div className="order-total d-flex justify-content-between align-items-center mt-8">

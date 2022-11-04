@@ -1,26 +1,32 @@
-import Product1 from '../../assets/images/product-1.jpg'
+import { useHistory } from "react-router-dom";
+import { ProductInterface } from "../../models/product.interface";
+import { Routes } from "../../routes";
 
-export default function ItemProduct(data: any) {
-    const currencyFormat = (num: any) => {
-        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' VNĐ'
-    }
-    const product = data.product;
-    return (
-        <>
-            <div className="col-4">
-                <div className='image-item'><img src={Product1} /></div>
-                <h4 className="name-product">Red Printed T-Shirt</h4>
-                <div className="rating">
-                    <i className="fa fa-star" />
-                    <i className="fa fa-star" />
-                    <i className="fa fa-star" />
-                    <i className="fa fa-star" />
-                    <i className="fa fa-star-o" />
-                </div>
-                <p>$50.00</p>
-            </div>
+interface ItemProductProps {
+  product: ProductInterface;
+}
+export default function ItemProduct(props: ItemProductProps) {
+  const { product } = props;
+  const currencyFormat = (num: any) => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " VNĐ";
+  };
+  const history = useHistory();
+  let routerProductDetail = (productItem: ProductInterface) => {
+    history.push({
+      pathname: Routes.ShopDetails.path,
+      state: productItem?.id,
+    });
+  };
+  return (
+    <>
+      <div className="col-4" onClick={() => routerProductDetail(product)}>
+        <div className="image-item">
+          <img src={product.photoURL} />
+        </div>
+        <h4 className="name-product">{product.title}</h4>
 
-        </>
-    )
-
+        <p>{currencyFormat(product.price)}</p>
+      </div>
+    </>
+  );
 }
