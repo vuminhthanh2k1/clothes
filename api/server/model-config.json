@@ -85,11 +85,23 @@
     "dataSource": "postgres",
     "public": true
   },
-  "Banner": {
+  "Test": {
     "dataSource": "postgres",
     "public": true
   },
-  "Test": {
+  "Cart": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Clothes": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "CartClothes": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "FavorisClothes": {
     "dataSource": "postgres",
     "public": true
   }
