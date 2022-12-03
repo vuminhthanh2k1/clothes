@@ -1,6 +1,9 @@
 /*
  * Sidebar
 */
+.btn-primary{
+	background-color: #4f9b3c !important;
+}
 .sidebar {
 	display: block;
 	position: fixed;
@@ -27,7 +30,7 @@
 		&.active {
 			& > .nav-link {
 				color: $light;
-				background-color: #2e3650;
+				background-color: #010102;
 				border: $border-width solid lighten( $dark, 20% );
 			}
 		}

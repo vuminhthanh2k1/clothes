@@ -120,10 +120,10 @@ export default function ShopDetails() {
                 </div>
               </div>
               <div className="col-2">
-                <p style={{ marginTop: 15 }}>
-                  {product?.categoryProduct?.title}
-                </p>
-                <h1 style={{ marginTop: 15 }}>{product?.title}</h1>
+                <h2 style={{ marginTop: 15 }}>
+                  Danh mục: {product?.categoryProduct?.title}
+                </h2>
+                <h3 style={{ marginTop: 15 }}>{product?.title}</h3>
                 <h4 style={{ marginTop: 15 }}>
                   {currencyFormat(product?.price)}
                 </h4>

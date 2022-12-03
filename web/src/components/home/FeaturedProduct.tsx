@@ -16,8 +16,10 @@ export default function FeaturedProduct() {
       url: "Clothes",
       params: {
         filter: {
-          order: "price ASC",
           limit: 4,
+          where:{
+            amount : {gt: 10}
+          }
         },
       },
     }).then((result) => setProducts(result.data));
@@ -34,7 +36,7 @@ export default function FeaturedProduct() {
   return (
     <>
       <div className="small-container">
-        <h2 className="title">Sản phẩm nổi bật</h2>
+        <h2 className="title">Sản phẩm sẵn có</h2>
         <div className="row">
           {products.data.map((el: ProductInterface, index: number) => {
             return (

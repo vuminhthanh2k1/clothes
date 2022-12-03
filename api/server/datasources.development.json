@@ -1,9 +1,9 @@
 {
   "postgres": {
     "host": "localhost",
-    "port": 5433,
+    "port": 5432,
     "database": "clothes",
-    "password": "Dalecarnegie521985",
+    "password": "123456",
     "name": "postgres",
     "user": "postgres",
     "connector": "postgresql",

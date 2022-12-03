@@ -30,7 +30,7 @@ export default () => {
   const search = async () => {
     request({
       method: 'GET',
-      url: 'Orders/statistic-revenue',
+      url: 'Carts/statistic-revenue',
       params: {
         year: year.getFullYear()
       }
