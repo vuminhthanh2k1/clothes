@@ -73,22 +73,6 @@
     "dataSource": "postgres",
     "public": true
   },
-  "Product": {
-    "dataSource": "postgres",
-    "public": true
-  },
-  "OrderProduct": {
-    "dataSource": "postgres",
-    "public": true
-  },
-  "Order": {
-    "dataSource": "postgres",
-    "public": true
-  },
-  "Test": {
-    "dataSource": "postgres",
-    "public": true
-  },
   "Cart": {
     "dataSource": "postgres",
     "public": true

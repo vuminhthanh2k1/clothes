@@ -25,7 +25,7 @@ module.exports = function (app) {
     // return;
     // auto update
     (async () => {
-        const [ACL, AccountToken, RoleMapping, Role, Account, Tag, Blog, Contact, Feedback, CategoryProduct, Product, Order, OrderProduct, Cart, CartClothes, Clothes, FavorisClothes] = await Promise.all([
+        const [ACL, AccountToken, RoleMapping, Role, Account, Tag, Blog, Contact, Feedback, CategoryProduct, Cart, CartClothes, Clothes, FavorisClothes] = await Promise.all([
             'ACL',
             'AccountToken',
             'RoleMapping',
@@ -36,9 +36,6 @@ module.exports = function (app) {
             'Contact',
             'Feedback',
             'CategoryProduct',
-            'Product',
-            'Order',
-            'OrderProduct',
             'Cart',
             'CartClothes',
             'Clothes',
