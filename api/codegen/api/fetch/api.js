@@ -11,7 +11,8 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TagApiFactory = exports.TagApi = exports.TagApiFp = exports.TagApiFetchParamCreator = exports.FeedbackApiFactory = exports.FeedbackApi = exports.FeedbackApiFp = exports.FeedbackApiFetchParamCreator = exports.FavorisClothesApiFactory = exports.FavorisClothesApi = exports.FavorisClothesApiFp = exports.FavorisClothesApiFetchParamCreator = exports.ContainerApiFactory = exports.ContainerApi = exports.ContainerApiFp = exports.ContainerApiFetchParamCreator = exports.ContactApiFactory = exports.ContactApi = exports.ContactApiFp = exports.ContactApiFetchParamCreator = exports.ClothesApiFactory = exports.ClothesApi = exports.ClothesApiFp = exports.ClothesApiFetchParamCreator = exports.CategoryProductApiFactory = exports.CategoryProductApi = exports.CategoryProductApiFp = exports.CategoryProductApiFetchParamCreator = exports.CartClothesApiFactory = exports.CartClothesApi = exports.CartClothesApiFp = exports.CartClothesApiFetchParamCreator = exports.CartApiFactory = exports.CartApi = exports.CartApiFp = exports.CartApiFetchParamCreator = exports.BlogApiFactory = exports.BlogApi = exports.BlogApiFp = exports.BlogApiFetchParamCreator = exports.AccountTokenApiFactory = exports.AccountTokenApi = exports.AccountTokenApiFp = exports.AccountTokenApiFetchParamCreator = exports.AccountApiFactory = exports.AccountApi = exports.AccountApiFp = exports.AccountApiFetchParamCreator = exports.BaseAPI = void 0;
+exports.TagApiFetchParamCreator = exports.StatisticApiFactory = exports.StatisticApi = exports.StatisticApiFp = exports.StatisticApiFetchParamCreator = exports.FeedbackApiFactory = exports.FeedbackApi = exports.FeedbackApiFp = exports.FeedbackApiFetchParamCreator = exports.FavorisClothesApiFactory = exports.FavorisClothesApi = exports.FavorisClothesApiFp = exports.FavorisClothesApiFetchParamCreator = exports.ContainerApiFactory = exports.ContainerApi = exports.ContainerApiFp = exports.ContainerApiFetchParamCreator = exports.ContactApiFactory = exports.ContactApi = exports.ContactApiFp = exports.ContactApiFetchParamCreator = exports.ClothesApiFactory = exports.ClothesApi = exports.ClothesApiFp = exports.ClothesApiFetchParamCreator = exports.CategoryProductApiFactory = exports.CategoryProductApi = exports.CategoryProductApiFp = exports.CategoryProductApiFetchParamCreator = exports.CartClothesApiFactory = exports.CartClothesApi = exports.CartClothesApiFp = exports.CartClothesApiFetchParamCreator = exports.CartApiFactory = exports.CartApi = exports.CartApiFp = exports.CartApiFetchParamCreator = exports.BlogApiFactory = exports.BlogApi = exports.BlogApiFp = exports.BlogApiFetchParamCreator = exports.AccountTokenApiFactory = exports.AccountTokenApi = exports.AccountTokenApiFp = exports.AccountTokenApiFetchParamCreator = exports.AccountApiFactory = exports.AccountApi = exports.AccountApiFp = exports.AccountApiFetchParamCreator = exports.BaseAPI = void 0;
+exports.TagApiFactory = exports.TagApi = exports.TagApiFp = void 0;
 const querystring = require("querystring");
 const url = require("url");
 const isomorphicFetch = require("isomorphic-fetch");
@@ -5449,6 +5450,33 @@ exports.CartApiFetchParamCreator = {
     },
     /**
      *
+     * @summary Counts cartClothes of Cart.
+     * @param id Cart id
+     * @param where Criteria to match model instances
+     */
+    cartPrototypeCountCartClothes(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling cartPrototypeCountCartClothes");
+        }
+        const baseUrl = `/Carts/{id}/cartClothes/count`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "where": params["where"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
      * @summary Counts clothes of Cart.
      * @param id Cart id
      * @param where Criteria to match model instances
@@ -5466,6 +5494,34 @@ exports.CartApiFetchParamCreator = {
         });
         let fetchOptions = assign({}, { method: "GET" }, options);
         let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Creates a new instance in cartClothes of this model.
+     * @param id Cart id
+     * @param data
+     */
+    cartPrototypeCreateCartClothes(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling cartPrototypeCreateCartClothes");
+        }
+        const baseUrl = `/Carts/{id}/cartClothes`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "POST" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
         if (contentTypeHeader) {
             fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
         }
@@ -5504,6 +5560,29 @@ exports.CartApiFetchParamCreator = {
     },
     /**
      *
+     * @summary Deletes all cartClothes of this model.
+     * @param id Cart id
+     */
+    cartPrototypeDeleteCartClothes(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling cartPrototypeDeleteCartClothes");
+        }
+        const baseUrl = `/Carts/{id}/cartClothes`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "DELETE" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
      * @summary Deletes all clothes of this model.
      * @param id Cart id
      */
@@ -5514,6 +5593,35 @@ exports.CartApiFetchParamCreator = {
         }
         const baseUrl = `/Carts/{id}/clothes`
             .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "DELETE" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Delete a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     */
+    cartPrototypeDestroyByIdCartClothes(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling cartPrototypeDestroyByIdCartClothes");
+        }
+        // verify required parameter "fk" is set
+        if (params["fk"] == null) {
+            throw new Error("Missing required parameter fk when calling cartPrototypeDestroyByIdCartClothes");
+        }
+        const baseUrl = `/Carts/{id}/cartClothes/{fk}`
+            .replace(`{${"id"}}`, `${params["id"]}`)
+            .replace(`{${"fk"}}`, `${params["fk"]}`);
         let urlObj = url.parse(baseUrl, true);
         let fetchOptions = assign({}, { method: "DELETE" }, options);
         let contentTypeHeader = {};
@@ -5585,6 +5693,35 @@ exports.CartApiFetchParamCreator = {
     },
     /**
      *
+     * @summary Find a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     */
+    cartPrototypeFindByIdCartClothes(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling cartPrototypeFindByIdCartClothes");
+        }
+        // verify required parameter "fk" is set
+        if (params["fk"] == null) {
+            throw new Error("Missing required parameter fk when calling cartPrototypeFindByIdCartClothes");
+        }
+        const baseUrl = `/Carts/{id}/cartClothes/{fk}`
+            .replace(`{${"id"}}`, `${params["id"]}`)
+            .replace(`{${"fk"}}`, `${params["fk"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
      * @summary Find a related item by id for clothes.
      * @param id Cart id
      * @param fk Foreign key for clothes
@@ -5628,6 +5765,33 @@ exports.CartApiFetchParamCreator = {
         let urlObj = url.parse(baseUrl, true);
         urlObj.query = assign({}, urlObj.query, {
             "refresh": params["refresh"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Queries cartClothes of Cart.
+     * @param id Cart id
+     * @param filter
+     */
+    cartPrototypeGetCartClothes(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling cartPrototypeGetCartClothes");
+        }
+        const baseUrl = `/Carts/{id}/cartClothes`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "filter": params["filter"],
         });
         let fetchOptions = assign({}, { method: "GET" }, options);
         let contentTypeHeader = {};
@@ -5749,6 +5913,40 @@ exports.CartApiFetchParamCreator = {
         let urlObj = url.parse(baseUrl, true);
         let fetchOptions = assign({}, { method: "DELETE" }, options);
         let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Update a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     * @param data
+     */
+    cartPrototypeUpdateByIdCartClothes(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling cartPrototypeUpdateByIdCartClothes");
+        }
+        // verify required parameter "fk" is set
+        if (params["fk"] == null) {
+            throw new Error("Missing required parameter fk when calling cartPrototypeUpdateByIdCartClothes");
+        }
+        const baseUrl = `/Carts/{id}/cartClothes/{fk}`
+            .replace(`{${"id"}}`, `${params["id"]}`)
+            .replace(`{${"fk"}}`, `${params["fk"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "PUT" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
         if (contentTypeHeader) {
             fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
         }
@@ -6253,12 +6451,50 @@ exports.CartApiFp = {
     },
     /**
      *
+     * @summary Counts cartClothes of Cart.
+     * @param id Cart id
+     * @param where Criteria to match model instances
+     */
+    cartPrototypeCountCartClothes(params, options) {
+        const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeCountCartClothes(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
      * @summary Counts clothes of Cart.
      * @param id Cart id
      * @param where Criteria to match model instances
      */
     cartPrototypeCountClothes(params, options) {
         const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeCountClothes(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Creates a new instance in cartClothes of this model.
+     * @param id Cart id
+     * @param data
+     */
+    cartPrototypeCreateCartClothes(params, options) {
+        const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeCreateCartClothes(params, options);
         return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
             return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -6291,11 +6527,48 @@ exports.CartApiFp = {
     },
     /**
      *
+     * @summary Deletes all cartClothes of this model.
+     * @param id Cart id
+     */
+    cartPrototypeDeleteCartClothes(params, options) {
+        const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeDeleteCartClothes(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response;
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
      * @summary Deletes all clothes of this model.
      * @param id Cart id
      */
     cartPrototypeDeleteClothes(params, options) {
         const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeDeleteClothes(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response;
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Delete a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     */
+    cartPrototypeDestroyByIdCartClothes(params, options) {
+        const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeDestroyByIdCartClothes(params, options);
         return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
             return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -6347,6 +6620,25 @@ exports.CartApiFp = {
     },
     /**
      *
+     * @summary Find a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     */
+    cartPrototypeFindByIdCartClothes(params, options) {
+        const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeFindByIdCartClothes(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
      * @summary Find a related item by id for clothes.
      * @param id Cart id
      * @param fk Foreign key for clothes
@@ -6372,6 +6664,25 @@ exports.CartApiFp = {
      */
     cartPrototypeGetAccount(params, options) {
         const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeGetAccount(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Queries cartClothes of Cart.
+     * @param id Cart id
+     * @param filter
+     */
+    cartPrototypeGetCartClothes(params, options) {
+        const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeGetCartClothes(params, options);
         return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
             return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -6453,6 +6764,26 @@ exports.CartApiFp = {
             return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response;
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Update a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     * @param data
+     */
+    cartPrototypeUpdateByIdCartClothes(params, options) {
+        const fetchArgs = exports.CartApiFetchParamCreator.cartPrototypeUpdateByIdCartClothes(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
                 }
                 else {
                     throw response;
@@ -6748,12 +7079,30 @@ class CartApi extends BaseAPI {
     }
     /**
      *
+     * @summary Counts cartClothes of Cart.
+     * @param id Cart id
+     * @param where Criteria to match model instances
+     */
+    cartPrototypeCountCartClothes(params, options) {
+        return exports.CartApiFp.cartPrototypeCountCartClothes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
      * @summary Counts clothes of Cart.
      * @param id Cart id
      * @param where Criteria to match model instances
      */
     cartPrototypeCountClothes(params, options) {
         return exports.CartApiFp.cartPrototypeCountClothes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Creates a new instance in cartClothes of this model.
+     * @param id Cart id
+     * @param data
+     */
+    cartPrototypeCreateCartClothes(params, options) {
+        return exports.CartApiFp.cartPrototypeCreateCartClothes(params, options)(this.fetch, this.basePath);
     }
     /**
      *
@@ -6766,11 +7115,28 @@ class CartApi extends BaseAPI {
     }
     /**
      *
+     * @summary Deletes all cartClothes of this model.
+     * @param id Cart id
+     */
+    cartPrototypeDeleteCartClothes(params, options) {
+        return exports.CartApiFp.cartPrototypeDeleteCartClothes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
      * @summary Deletes all clothes of this model.
      * @param id Cart id
      */
     cartPrototypeDeleteClothes(params, options) {
         return exports.CartApiFp.cartPrototypeDeleteClothes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Delete a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     */
+    cartPrototypeDestroyByIdCartClothes(params, options) {
+        return exports.CartApiFp.cartPrototypeDestroyByIdCartClothes(params, options)(this.fetch, this.basePath);
     }
     /**
      *
@@ -6792,6 +7158,15 @@ class CartApi extends BaseAPI {
     }
     /**
      *
+     * @summary Find a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     */
+    cartPrototypeFindByIdCartClothes(params, options) {
+        return exports.CartApiFp.cartPrototypeFindByIdCartClothes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
      * @summary Find a related item by id for clothes.
      * @param id Cart id
      * @param fk Foreign key for clothes
@@ -6807,6 +7182,15 @@ class CartApi extends BaseAPI {
      */
     cartPrototypeGetAccount(params, options) {
         return exports.CartApiFp.cartPrototypeGetAccount(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Queries cartClothes of Cart.
+     * @param id Cart id
+     * @param filter
+     */
+    cartPrototypeGetCartClothes(params, options) {
+        return exports.CartApiFp.cartPrototypeGetCartClothes(params, options)(this.fetch, this.basePath);
     }
     /**
      *
@@ -6844,6 +7228,16 @@ class CartApi extends BaseAPI {
      */
     cartPrototypeUnlinkClothes(params, options) {
         return exports.CartApiFp.cartPrototypeUnlinkClothes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Update a related item by id for cartClothes.
+     * @param id Cart id
+     * @param fk Foreign key for cartClothes
+     * @param data
+     */
+    cartPrototypeUpdateByIdCartClothes(params, options) {
+        return exports.CartApiFp.cartPrototypeUpdateByIdCartClothes(params, options)(this.fetch, this.basePath);
     }
     /**
      *
@@ -7046,12 +7440,30 @@ const CartApiFactory = function (fetch, basePath) {
         },
         /**
          *
+         * @summary Counts cartClothes of Cart.
+         * @param id Cart id
+         * @param where Criteria to match model instances
+         */
+        cartPrototypeCountCartClothes(params, options) {
+            return exports.CartApiFp.cartPrototypeCountCartClothes(params, options)(fetch, basePath);
+        },
+        /**
+         *
          * @summary Counts clothes of Cart.
          * @param id Cart id
          * @param where Criteria to match model instances
          */
         cartPrototypeCountClothes(params, options) {
             return exports.CartApiFp.cartPrototypeCountClothes(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Creates a new instance in cartClothes of this model.
+         * @param id Cart id
+         * @param data
+         */
+        cartPrototypeCreateCartClothes(params, options) {
+            return exports.CartApiFp.cartPrototypeCreateCartClothes(params, options)(fetch, basePath);
         },
         /**
          *
@@ -7064,11 +7476,28 @@ const CartApiFactory = function (fetch, basePath) {
         },
         /**
          *
+         * @summary Deletes all cartClothes of this model.
+         * @param id Cart id
+         */
+        cartPrototypeDeleteCartClothes(params, options) {
+            return exports.CartApiFp.cartPrototypeDeleteCartClothes(params, options)(fetch, basePath);
+        },
+        /**
+         *
          * @summary Deletes all clothes of this model.
          * @param id Cart id
          */
         cartPrototypeDeleteClothes(params, options) {
             return exports.CartApiFp.cartPrototypeDeleteClothes(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Delete a related item by id for cartClothes.
+         * @param id Cart id
+         * @param fk Foreign key for cartClothes
+         */
+        cartPrototypeDestroyByIdCartClothes(params, options) {
+            return exports.CartApiFp.cartPrototypeDestroyByIdCartClothes(params, options)(fetch, basePath);
         },
         /**
          *
@@ -7090,6 +7519,15 @@ const CartApiFactory = function (fetch, basePath) {
         },
         /**
          *
+         * @summary Find a related item by id for cartClothes.
+         * @param id Cart id
+         * @param fk Foreign key for cartClothes
+         */
+        cartPrototypeFindByIdCartClothes(params, options) {
+            return exports.CartApiFp.cartPrototypeFindByIdCartClothes(params, options)(fetch, basePath);
+        },
+        /**
+         *
          * @summary Find a related item by id for clothes.
          * @param id Cart id
          * @param fk Foreign key for clothes
@@ -7105,6 +7543,15 @@ const CartApiFactory = function (fetch, basePath) {
          */
         cartPrototypeGetAccount(params, options) {
             return exports.CartApiFp.cartPrototypeGetAccount(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Queries cartClothes of Cart.
+         * @param id Cart id
+         * @param filter
+         */
+        cartPrototypeGetCartClothes(params, options) {
+            return exports.CartApiFp.cartPrototypeGetCartClothes(params, options)(fetch, basePath);
         },
         /**
          *
@@ -7142,6 +7589,16 @@ const CartApiFactory = function (fetch, basePath) {
          */
         cartPrototypeUnlinkClothes(params, options) {
             return exports.CartApiFp.cartPrototypeUnlinkClothes(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Update a related item by id for cartClothes.
+         * @param id Cart id
+         * @param fk Foreign key for cartClothes
+         * @param data
+         */
+        cartPrototypeUpdateByIdCartClothes(params, options) {
+            return exports.CartApiFp.cartPrototypeUpdateByIdCartClothes(params, options)(fetch, basePath);
         },
         /**
          *
@@ -15334,6 +15791,1206 @@ const FeedbackApiFactory = function (fetch, basePath) {
     };
 };
 exports.FeedbackApiFactory = FeedbackApiFactory;
+/**
+ * StatisticApi - fetch parameter creator
+ */
+exports.StatisticApiFetchParamCreator = {
+    /**
+     *
+     * @summary Count instances of the model matched by where from the data source.
+     * @param where Criteria to match model instances
+     */
+    statisticCount(params, options) {
+        const baseUrl = `/Statistics/count`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "where": params["where"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Create a new instance of the model and persist it into the data source.
+     * @param data Model instance data
+     */
+    statisticCreate(params, options) {
+        const baseUrl = `/Statistics`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "POST" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Create a change stream.
+     * @param options
+     */
+    statisticCreateChangeStreamGetStatisticsChangeStream(params, options) {
+        const baseUrl = `/Statistics/change-stream`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "options": params["options"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Create a change stream.
+     * @param options
+     */
+    statisticCreateChangeStreamPostStatisticsChangeStream(params, options) {
+        const baseUrl = `/Statistics/change-stream`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "POST" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/x-www-form-urlencoded" };
+        fetchOptions.body = querystring.stringify({
+            "options": params["options"],
+        });
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Delete a model instance by {{id}} from the data source.
+     * @param id Model id
+     */
+    statisticDeleteById(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling statisticDeleteById");
+        }
+        const baseUrl = `/Statistics/{id}`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "DELETE" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    statisticExistsGetStatisticsidExists(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling statisticExistsGetStatisticsidExists");
+        }
+        const baseUrl = `/Statistics/{id}/exists`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    statisticExistsHeadStatisticsid(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling statisticExistsHeadStatisticsid");
+        }
+        const baseUrl = `/Statistics/{id}`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "HEAD" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Find all instances of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    statisticFind(params, options) {
+        const baseUrl = `/Statistics`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "filter": params["filter"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Find a model instance by {{id}} from the data source.
+     * @param id Model id
+     * @param filter Filter defining fields and include - must be a JSON-encoded string ({\&quot;something\&quot;:\&quot;value\&quot;})
+     */
+    statisticFindById(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling statisticFindById");
+        }
+        const baseUrl = `/Statistics/{id}`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "filter": params["filter"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Find first instance of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    statisticFindOne(params, options) {
+        const baseUrl = `/Statistics/findOne`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "filter": params["filter"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Patch an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticPatchOrCreate(params, options) {
+        const baseUrl = `/Statistics`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "PATCH" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Fetches belongsTo relation cart.
+     * @param id Statistic id
+     * @param refresh
+     */
+    statisticPrototypeGetCart(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling statisticPrototypeGetCart");
+        }
+        const baseUrl = `/Statistics/{id}/cart`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "refresh": params["refresh"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Patch attributes for a model instance and persist it into the data source.
+     * @param id Statistic id
+     * @param data An object of model property name/value pairs
+     */
+    statisticPrototypePatchAttributes(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling statisticPrototypePatchAttributes");
+        }
+        const baseUrl = `/Statistics/{id}`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "PATCH" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    statisticReplaceByIdPostStatisticsidReplace(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling statisticReplaceByIdPostStatisticsidReplace");
+        }
+        const baseUrl = `/Statistics/{id}/replace`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "POST" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    statisticReplaceByIdPutStatisticsid(params, options) {
+        // verify required parameter "id" is set
+        if (params["id"] == null) {
+            throw new Error("Missing required parameter id when calling statisticReplaceByIdPutStatisticsid");
+        }
+        const baseUrl = `/Statistics/{id}`
+            .replace(`{${"id"}}`, `${params["id"]}`);
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "PUT" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticReplaceOrCreatePostStatisticsReplaceOrCreate(params, options) {
+        const baseUrl = `/Statistics/replaceOrCreate`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "POST" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticReplaceOrCreatePutStatistics(params, options) {
+        const baseUrl = `/Statistics`;
+        let urlObj = url.parse(baseUrl, true);
+        let fetchOptions = assign({}, { method: "PUT" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary statistic order by year
+     * @param year year
+     */
+    statisticStatisticClothes(params, options) {
+        const baseUrl = `/Statistics/clothes`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "year": params["year"],
+        });
+        let fetchOptions = assign({}, { method: "GET" }, options);
+        let contentTypeHeader = {};
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Update instances of the model matched by {{where}} from the data source.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    statisticUpdateAll(params, options) {
+        const baseUrl = `/Statistics/update`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "where": params["where"],
+        });
+        let fetchOptions = assign({}, { method: "POST" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+    /**
+     *
+     * @summary Update an existing model instance or insert a new one into the data source based on the where criteria.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    statisticUpsertWithWhere(params, options) {
+        const baseUrl = `/Statistics/upsertWithWhere`;
+        let urlObj = url.parse(baseUrl, true);
+        urlObj.query = assign({}, urlObj.query, {
+            "where": params["where"],
+        });
+        let fetchOptions = assign({}, { method: "POST" }, options);
+        let contentTypeHeader = {};
+        contentTypeHeader = { "Content-Type": "application/json" };
+        if (params["data"]) {
+            fetchOptions.body = JSON.stringify(params["data"] || {});
+        }
+        if (contentTypeHeader) {
+            fetchOptions.headers = assign({}, contentTypeHeader, fetchOptions.headers);
+        }
+        return {
+            url: url.format(urlObj),
+            options: fetchOptions,
+        };
+    },
+};
+/**
+ * StatisticApi - functional programming interface
+ */
+exports.StatisticApiFp = {
+    /**
+     *
+     * @summary Count instances of the model matched by where from the data source.
+     * @param where Criteria to match model instances
+     */
+    statisticCount(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticCount(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Create a new instance of the model and persist it into the data source.
+     * @param data Model instance data
+     */
+    statisticCreate(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticCreate(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Create a change stream.
+     * @param options
+     */
+    statisticCreateChangeStreamGetStatisticsChangeStream(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticCreateChangeStreamGetStatisticsChangeStream(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Create a change stream.
+     * @param options
+     */
+    statisticCreateChangeStreamPostStatisticsChangeStream(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticCreateChangeStreamPostStatisticsChangeStream(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Delete a model instance by {{id}} from the data source.
+     * @param id Model id
+     */
+    statisticDeleteById(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticDeleteById(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    statisticExistsGetStatisticsidExists(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticExistsGetStatisticsidExists(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    statisticExistsHeadStatisticsid(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticExistsHeadStatisticsid(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Find all instances of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    statisticFind(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticFind(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Find a model instance by {{id}} from the data source.
+     * @param id Model id
+     * @param filter Filter defining fields and include - must be a JSON-encoded string ({\&quot;something\&quot;:\&quot;value\&quot;})
+     */
+    statisticFindById(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticFindById(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Find first instance of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    statisticFindOne(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticFindOne(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Patch an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticPatchOrCreate(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticPatchOrCreate(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Fetches belongsTo relation cart.
+     * @param id Statistic id
+     * @param refresh
+     */
+    statisticPrototypeGetCart(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticPrototypeGetCart(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Patch attributes for a model instance and persist it into the data source.
+     * @param id Statistic id
+     * @param data An object of model property name/value pairs
+     */
+    statisticPrototypePatchAttributes(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticPrototypePatchAttributes(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    statisticReplaceByIdPostStatisticsidReplace(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticReplaceByIdPostStatisticsidReplace(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    statisticReplaceByIdPutStatisticsid(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticReplaceByIdPutStatisticsid(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticReplaceOrCreatePostStatisticsReplaceOrCreate(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticReplaceOrCreatePostStatisticsReplaceOrCreate(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticReplaceOrCreatePutStatistics(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticReplaceOrCreatePutStatistics(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary statistic order by year
+     * @param year year
+     */
+    statisticStatisticClothes(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticStatisticClothes(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Update instances of the model matched by {{where}} from the data source.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    statisticUpdateAll(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticUpdateAll(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+    /**
+     *
+     * @summary Update an existing model instance or insert a new one into the data source based on the where criteria.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    statisticUpsertWithWhere(params, options) {
+        const fetchArgs = exports.StatisticApiFetchParamCreator.statisticUpsertWithWhere(params, options);
+        return (fetch = isomorphicFetch, basePath = BASE_PATH) => {
+            return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                }
+                else {
+                    throw response;
+                }
+            });
+        };
+    },
+};
+/**
+ * StatisticApi - object-oriented interface
+ */
+class StatisticApi extends BaseAPI {
+    /**
+     *
+     * @summary Count instances of the model matched by where from the data source.
+     * @param where Criteria to match model instances
+     */
+    statisticCount(params, options) {
+        return exports.StatisticApiFp.statisticCount(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Create a new instance of the model and persist it into the data source.
+     * @param data Model instance data
+     */
+    statisticCreate(params, options) {
+        return exports.StatisticApiFp.statisticCreate(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Create a change stream.
+     * @param options
+     */
+    statisticCreateChangeStreamGetStatisticsChangeStream(params, options) {
+        return exports.StatisticApiFp.statisticCreateChangeStreamGetStatisticsChangeStream(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Create a change stream.
+     * @param options
+     */
+    statisticCreateChangeStreamPostStatisticsChangeStream(params, options) {
+        return exports.StatisticApiFp.statisticCreateChangeStreamPostStatisticsChangeStream(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Delete a model instance by {{id}} from the data source.
+     * @param id Model id
+     */
+    statisticDeleteById(params, options) {
+        return exports.StatisticApiFp.statisticDeleteById(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    statisticExistsGetStatisticsidExists(params, options) {
+        return exports.StatisticApiFp.statisticExistsGetStatisticsidExists(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Check whether a model instance exists in the data source.
+     * @param id Model id
+     */
+    statisticExistsHeadStatisticsid(params, options) {
+        return exports.StatisticApiFp.statisticExistsHeadStatisticsid(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Find all instances of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    statisticFind(params, options) {
+        return exports.StatisticApiFp.statisticFind(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Find a model instance by {{id}} from the data source.
+     * @param id Model id
+     * @param filter Filter defining fields and include - must be a JSON-encoded string ({\&quot;something\&quot;:\&quot;value\&quot;})
+     */
+    statisticFindById(params, options) {
+        return exports.StatisticApiFp.statisticFindById(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Find first instance of the model matched by filter from the data source.
+     * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+     */
+    statisticFindOne(params, options) {
+        return exports.StatisticApiFp.statisticFindOne(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Patch an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticPatchOrCreate(params, options) {
+        return exports.StatisticApiFp.statisticPatchOrCreate(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Fetches belongsTo relation cart.
+     * @param id Statistic id
+     * @param refresh
+     */
+    statisticPrototypeGetCart(params, options) {
+        return exports.StatisticApiFp.statisticPrototypeGetCart(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Patch attributes for a model instance and persist it into the data source.
+     * @param id Statistic id
+     * @param data An object of model property name/value pairs
+     */
+    statisticPrototypePatchAttributes(params, options) {
+        return exports.StatisticApiFp.statisticPrototypePatchAttributes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    statisticReplaceByIdPostStatisticsidReplace(params, options) {
+        return exports.StatisticApiFp.statisticReplaceByIdPostStatisticsidReplace(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Replace attributes for a model instance and persist it into the data source.
+     * @param id Model id
+     * @param data Model instance data
+     */
+    statisticReplaceByIdPutStatisticsid(params, options) {
+        return exports.StatisticApiFp.statisticReplaceByIdPutStatisticsid(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticReplaceOrCreatePostStatisticsReplaceOrCreate(params, options) {
+        return exports.StatisticApiFp.statisticReplaceOrCreatePostStatisticsReplaceOrCreate(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Replace an existing model instance or insert a new one into the data source.
+     * @param data Model instance data
+     */
+    statisticReplaceOrCreatePutStatistics(params, options) {
+        return exports.StatisticApiFp.statisticReplaceOrCreatePutStatistics(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary statistic order by year
+     * @param year year
+     */
+    statisticStatisticClothes(params, options) {
+        return exports.StatisticApiFp.statisticStatisticClothes(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Update instances of the model matched by {{where}} from the data source.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    statisticUpdateAll(params, options) {
+        return exports.StatisticApiFp.statisticUpdateAll(params, options)(this.fetch, this.basePath);
+    }
+    /**
+     *
+     * @summary Update an existing model instance or insert a new one into the data source based on the where criteria.
+     * @param where Criteria to match model instances
+     * @param data An object of model property name/value pairs
+     */
+    statisticUpsertWithWhere(params, options) {
+        return exports.StatisticApiFp.statisticUpsertWithWhere(params, options)(this.fetch, this.basePath);
+    }
+}
+exports.StatisticApi = StatisticApi;
+;
+/**
+ * StatisticApi - factory interface
+ */
+const StatisticApiFactory = function (fetch, basePath) {
+    return {
+        /**
+         *
+         * @summary Count instances of the model matched by where from the data source.
+         * @param where Criteria to match model instances
+         */
+        statisticCount(params, options) {
+            return exports.StatisticApiFp.statisticCount(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Create a new instance of the model and persist it into the data source.
+         * @param data Model instance data
+         */
+        statisticCreate(params, options) {
+            return exports.StatisticApiFp.statisticCreate(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Create a change stream.
+         * @param options
+         */
+        statisticCreateChangeStreamGetStatisticsChangeStream(params, options) {
+            return exports.StatisticApiFp.statisticCreateChangeStreamGetStatisticsChangeStream(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Create a change stream.
+         * @param options
+         */
+        statisticCreateChangeStreamPostStatisticsChangeStream(params, options) {
+            return exports.StatisticApiFp.statisticCreateChangeStreamPostStatisticsChangeStream(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Delete a model instance by {{id}} from the data source.
+         * @param id Model id
+         */
+        statisticDeleteById(params, options) {
+            return exports.StatisticApiFp.statisticDeleteById(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Check whether a model instance exists in the data source.
+         * @param id Model id
+         */
+        statisticExistsGetStatisticsidExists(params, options) {
+            return exports.StatisticApiFp.statisticExistsGetStatisticsidExists(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Check whether a model instance exists in the data source.
+         * @param id Model id
+         */
+        statisticExistsHeadStatisticsid(params, options) {
+            return exports.StatisticApiFp.statisticExistsHeadStatisticsid(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Find all instances of the model matched by filter from the data source.
+         * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+         */
+        statisticFind(params, options) {
+            return exports.StatisticApiFp.statisticFind(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Find a model instance by {{id}} from the data source.
+         * @param id Model id
+         * @param filter Filter defining fields and include - must be a JSON-encoded string ({\&quot;something\&quot;:\&quot;value\&quot;})
+         */
+        statisticFindById(params, options) {
+            return exports.StatisticApiFp.statisticFindById(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Find first instance of the model matched by filter from the data source.
+         * @param filter Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string (&#x60;{\&quot;where\&quot;:{\&quot;something\&quot;:\&quot;value\&quot;}}&#x60;).  See https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries for more details.
+         */
+        statisticFindOne(params, options) {
+            return exports.StatisticApiFp.statisticFindOne(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Patch an existing model instance or insert a new one into the data source.
+         * @param data Model instance data
+         */
+        statisticPatchOrCreate(params, options) {
+            return exports.StatisticApiFp.statisticPatchOrCreate(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Fetches belongsTo relation cart.
+         * @param id Statistic id
+         * @param refresh
+         */
+        statisticPrototypeGetCart(params, options) {
+            return exports.StatisticApiFp.statisticPrototypeGetCart(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Patch attributes for a model instance and persist it into the data source.
+         * @param id Statistic id
+         * @param data An object of model property name/value pairs
+         */
+        statisticPrototypePatchAttributes(params, options) {
+            return exports.StatisticApiFp.statisticPrototypePatchAttributes(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Replace attributes for a model instance and persist it into the data source.
+         * @param id Model id
+         * @param data Model instance data
+         */
+        statisticReplaceByIdPostStatisticsidReplace(params, options) {
+            return exports.StatisticApiFp.statisticReplaceByIdPostStatisticsidReplace(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Replace attributes for a model instance and persist it into the data source.
+         * @param id Model id
+         * @param data Model instance data
+         */
+        statisticReplaceByIdPutStatisticsid(params, options) {
+            return exports.StatisticApiFp.statisticReplaceByIdPutStatisticsid(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Replace an existing model instance or insert a new one into the data source.
+         * @param data Model instance data
+         */
+        statisticReplaceOrCreatePostStatisticsReplaceOrCreate(params, options) {
+            return exports.StatisticApiFp.statisticReplaceOrCreatePostStatisticsReplaceOrCreate(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Replace an existing model instance or insert a new one into the data source.
+         * @param data Model instance data
+         */
+        statisticReplaceOrCreatePutStatistics(params, options) {
+            return exports.StatisticApiFp.statisticReplaceOrCreatePutStatistics(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary statistic order by year
+         * @param year year
+         */
+        statisticStatisticClothes(params, options) {
+            return exports.StatisticApiFp.statisticStatisticClothes(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Update instances of the model matched by {{where}} from the data source.
+         * @param where Criteria to match model instances
+         * @param data An object of model property name/value pairs
+         */
+        statisticUpdateAll(params, options) {
+            return exports.StatisticApiFp.statisticUpdateAll(params, options)(fetch, basePath);
+        },
+        /**
+         *
+         * @summary Update an existing model instance or insert a new one into the data source based on the where criteria.
+         * @param where Criteria to match model instances
+         * @param data An object of model property name/value pairs
+         */
+        statisticUpsertWithWhere(params, options) {
+            return exports.StatisticApiFp.statisticUpsertWithWhere(params, options)(fetch, basePath);
+        },
+    };
+};
+exports.StatisticApiFactory = StatisticApiFactory;
 /**
  * TagApi - fetch parameter creator
  */

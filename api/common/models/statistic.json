@@ -1,5 +1,5 @@
 {
-  "name": "CartClothes",
+  "name": "Statistic",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -12,26 +12,13 @@
     }
   },
   "properties": {
-    "amount": {
-      "type": "number"
-    },
-    "price": {
-      "type": "number"
-    },
-    "inputPrice": {
-      "type": "number"
-    }
+    
   },
   "validations": [],
   "relations": {
     "cart": {
       "type": "belongsTo",
       "model": "Cart",
-      "foreignKey": ""
-    },
-    "clothes": {
-      "type": "belongsTo",
-      "model": "Clothes",
       "foreignKey": ""
     }
   },
@@ -55,14 +42,14 @@
       "permission": "ALLOW"
     },
     {
-      "accessType": "*",
+      "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],
   "methods": {
-    "getOrder": {
+    "statisticClothes": {
       "accepts": [
         {
           "arg": "ctx",
@@ -74,10 +61,10 @@
           }
         },
         {
-          "arg": "user",
-          "type": "any",
-          "required": true,
-          "description": "userId",
+          "arg": "year",
+          "type": "number",
+          "required": false,
+          "description": "year",
           "http": {
             "source": "query"
           }
@@ -85,12 +72,12 @@
       ],
       "returns": {
         "root": true,
-        "type": "object"
+        "type": "any"
       },
-      "description": "Get order product in cart by token",
+      "description": "statistic order by year",
       "http": [
         {
-          "path": "/get-order-cart",
+          "path": "/clothes",
           "verb": "get"
         }
       ]

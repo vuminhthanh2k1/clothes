@@ -36,7 +36,7 @@
     "metaDescription": {
       "type": "string"
     },
-    "record":{
+    "inputPrice":{
       "type": "number"
     }
   },

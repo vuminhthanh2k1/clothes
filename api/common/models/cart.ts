@@ -28,6 +28,7 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
           clothesId: clothes.productId,
           amount: 1,
           price: clothes.price,
+          inputPrice: clothes.inputPrice,
           cartId: cart.id,
         });
         cartClothesCreate.save();
@@ -43,6 +44,7 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         clothesId: clothes.productId,
         amount: 1,
         price: clothes.price,
+        inputPrice: clothes.inputPrice,
         cartId: cartCreate.id,
       });
       cartClothesCreate.save();
@@ -284,9 +286,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthFeburary = await Cart.find({
       where: {
@@ -299,9 +309,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthMatch = await Cart.find({
       where: {
@@ -314,9 +332,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthApril = await Cart.find({
       where: {
@@ -329,9 +355,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthMay = await Cart.find({
       where: {
@@ -344,9 +378,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthJune = await Cart.find({
       where: {
@@ -359,9 +401,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthJuly = await Cart.find({
       where: {
@@ -374,9 +424,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthAugust = await Cart.find({
       where: {
@@ -389,9 +447,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthSeptember = await Cart.find({
       where: {
@@ -404,9 +470,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthOctober = await Cart.find({
       where: {
@@ -419,9 +493,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthNovember = await Cart.find({
       where: {
@@ -434,9 +516,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
     let monthDecember = await Cart.find({
       where: {
@@ -449,9 +539,17 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
         ],
       },
     }).then((result) => {
-      let total = 0;
-      result.forEach((item: any) => (total += item.price.valueOf()));
-      return total;
+      let totalPrice = 0;
+      let totalInputPrice = 0;
+      result.forEach((item: any) => {
+        totalPrice += item.price.valueOf();
+        totalInputPrice += item.inputPrice.valueOf();
+      });
+      return {
+        totalPrice,
+        totalInputPrice,
+        profit: totalPrice - totalInputPrice,
+      };
     });
 
     resp = [
@@ -510,7 +608,7 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
   (Cart as any).changeAmount = async function (ctx: any) {
     const cartId = ctx.req.query.cartId;
     console.log(cartId);
-    
+
     const CartClothes = Cart.app.models.CartClothes;
     const Clothes = Cart.app.models.Clothes;
     const cart = await Cart.findOne({ where: { id: cartId } });

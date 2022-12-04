@@ -195,6 +195,32 @@ export default () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Giá nhập &nbsp;</Form.Label>
+            <Controller
+              control={control}
+              name="inputPrice"
+              render={({ field: { onChange, onBlur, value } }) => (
+                <InputGroup
+                  style={{
+                    border:
+                      errors.price?.type === "required" && "1px solid red",
+                  }}
+                >
+                  <Form.Control
+                    autoFocus
+                    required
+                    type="number"
+                    onChange={(e) => onChange(e.target.value)}
+                    onBlur={onBlur}
+                  />
+                </InputGroup>
+              )}
+              rules={{
+                required: true,
+              }}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Danh mục: &nbsp; </Form.Label>
             <select
               value={categoryProductId}

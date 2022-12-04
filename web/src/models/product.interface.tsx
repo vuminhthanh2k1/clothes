@@ -11,5 +11,6 @@ export interface ProductInterface {
   size: string;
   type: string;
   amount: number;
+  inputPrice: number;
   categoryProduct: CategoryProductInterface;
 }

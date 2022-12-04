@@ -14,6 +14,7 @@ export default function Cart() {
     []
   );
   const [price, setPrice] = useState<number>(0);
+  const [inputPrice, setInputPrice] = useState<number>(0);
   const history = useHistory();
   let { addToast } = useToasts();
   useEffect(() => {
@@ -32,11 +33,13 @@ export default function Cart() {
         if (result.data.length > 0) {
           setOrderProducts(result.data);
           let total = 0;
-          result.data.forEach(
-            (orderProduct: OrderProductInterface) =>
-              (total += orderProduct.amount * orderProduct.price)
-          );
+          let totalInputPrice = 0;
+          result.data.forEach((orderProduct: OrderProductInterface) => {
+            total += orderProduct.price;
+            totalInputPrice += orderProduct.inputPrice;
+          });
           setPrice(total);
+          setInputPrice(totalInputPrice);
         }
       })
       .catch((err) => console.log(err));
@@ -51,25 +54,35 @@ export default function Cart() {
         price,
         orderProducts,
         cartId: orderProducts[0].cartId,
+        inputPrice
       },
     });
   };
   const addPrice = (orderProduct: OrderProductInterface) => {
     updateOrderProduct(orderProduct.amount + 1, orderProduct);
+    let totalInputPrice = inputPrice;
     let total = price;
-    total += orderProduct.price;
+    total += orderProduct.clothes.price;
+    totalInputPrice += orderProduct.clothes.inputPrice;
     setPrice(total);
+    setInputPrice(totalInputPrice);
   };
   const subPrice = (orderProduct: OrderProductInterface) => {
     if (orderProduct.amount == 1) {
       deleteOrderProduct(orderProduct);
+      let totalInputPrice = inputPrice;
       let total = price;
-      total -= orderProduct.price;
+      total -= orderProduct.clothes.price;
+      totalInputPrice -= orderProduct.clothes.inputPrice;
       setPrice(total);
+      setInputPrice(totalInputPrice);
     } else {
+      let totalInputPrice = inputPrice;
       let total = price;
-      total -= orderProduct.price;
+      totalInputPrice -= orderProduct.clothes.inputPrice;
+      total -= orderProduct.clothes.price;
       setPrice(total);
+      setInputPrice(totalInputPrice);
       updateOrderProduct(orderProduct.amount - 1, orderProduct);
     }
   };
@@ -83,7 +96,11 @@ export default function Cart() {
       params: {
         access_token,
       },
-      data: { amount: num },
+      data: {
+        amount: num,
+        price: num * orderProduct.clothes.price,
+        inputPrice: num * orderProduct.clothes.inputPrice,
+      },
     }).then(() => {
       search();
     });
