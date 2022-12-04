@@ -70,7 +70,7 @@ module.exports = function (Cart: PersistedModelStatic<Cart>) {
       console.log(error);
     }
   });
-
+  //comment
   (Cart as any).statisticByAmount = async function (ctx: any) {
     const year = ctx.req.query.year;
     let dayOfFeburary = 0;
