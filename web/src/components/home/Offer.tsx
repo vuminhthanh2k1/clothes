@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { apiUrl } from "../../enviroments";
 // const access_token = localStorage.getItem("token");
-import Offer1 from '../../assets/images/exclusive.png'
+import Offer1 from '../../assets/images/ao_footer.png'
 export default function Offer() {
 
     return (
@@ -17,12 +17,11 @@ export default function Offer() {
                     <div className="row">
                         <div className="col-2"><img src={Offer1} className="offer-img" /> </div>
                         <div className="col-2">
-                            <p>Exclusive Availabble on RedStore</p>
-                            <h1>Smart Band 4</h1>
+                            <p>Christmas collection availabble on SIMPLE</p>
+                            <h1>Xmas Green Jacket</h1>
                             <small>
-                                The Mi Smart Band 4 features a 39.9% larger (than Mi Band 4) AMOLED color full-touch display
-                                with
-                                adjustable brightness, so everything is clear as can be</small>
+                                The Xmas green jacket is best seller item in christmas collection 2022
+                            </small>
                             <a href="#" className="btn">Buy Now →</a>
                         </div>
                     </div>

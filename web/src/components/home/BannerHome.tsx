@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { apiUrl } from "../../enviroments";
 // const access_token = localStorage.getItem("token");
-import HeaderBanner from '../../assets/images/image1.png'
+import HeaderBanner from '../../assets/images/logo_noel3.png'
 
 export default function BannerHome() {
 
@@ -16,10 +16,8 @@ export default function BannerHome() {
                 <div className="container">
                     <div className="row">
                         <div className="col-2">
-                            <h1>Give Your Workout<br /> A New Style!</h1>
-                            <p>Success ins't always about greatness. It's about
-                                consistency. Consistent <br />hard work gains success. Greatness
-                                will come. </p>
+                            <h1>Make Everything Popular...<br /> Christmas Collection</h1>
+                            <p>Khám phá bộ sưu tập giáng sinh cùng SIMPLE nhé<br />Xmas is coming... </p>
                             <a href="#" className="btn">Explore Now →</a>
                         </div>
                         <div className="col-2">

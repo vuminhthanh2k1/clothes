@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import Cart from "../../assets/images/cart.png";
-import Logo from "../../assets/images/logo.png";
+import Logo from "../../assets/images/logo_noel2.png";
 import Menu from "../../assets/images/menu.png";
 // import '../../assets/css/classy-nav.css';
 // import img from '../../assets/images/bg-img/24.jpg';
