@@ -86,6 +86,7 @@ export default function Checkout() {
       data: {
         status: "Đã tạo đơn",
         price: data?.price,
+        inputPrice: data?.inputPrice,
         code: makeid(4),
         city: citySelect,
         district: districtSelect,

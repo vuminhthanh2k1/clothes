@@ -44,6 +44,9 @@
     },
     "price": {
       "type": "number"
+    },
+    "inputPrice": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -58,6 +61,11 @@
       "model": "Clothes",
       "foreignKey": "",
       "through": "CartClothes"
+    },
+    "cartClothes": {
+      "type": "hasMany",
+      "model": "CartClothes",
+      "foreignKey": ""
     }
   },
   "acls": [

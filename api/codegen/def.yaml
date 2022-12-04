@@ -3964,6 +3964,82 @@ paths:
           schema:
             type: boolean
       deprecated: false
+  '/Carts/{id}/cartClothes/{fk}':
+    get:
+      tags:
+        - Cart
+      summary: Find a related item by id for cartClothes.
+      operationId: Cart.prototype.__findById__cartClothes
+      parameters:
+        - name: id
+          in: path
+          description: Cart id
+          required: true
+          type: string
+          format: JSON
+        - name: fk
+          in: path
+          description: Foreign key for cartClothes
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/CartClothes'
+      deprecated: false
+    delete:
+      tags:
+        - Cart
+      summary: Delete a related item by id for cartClothes.
+      operationId: Cart.prototype.__destroyById__cartClothes
+      parameters:
+        - name: id
+          in: path
+          description: Cart id
+          required: true
+          type: string
+          format: JSON
+        - name: fk
+          in: path
+          description: Foreign key for cartClothes
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - Cart
+      summary: Update a related item by id for cartClothes.
+      operationId: Cart.prototype.__updateById__cartClothes
+      parameters:
+        - name: id
+          in: path
+          description: Cart id
+          required: true
+          type: string
+          format: JSON
+        - name: fk
+          in: path
+          description: Foreign key for cartClothes
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/CartClothes'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/CartClothes'
+      deprecated: false
   '/Carts/{id}/clothes':
     get:
       tags:
@@ -4035,6 +4111,100 @@ paths:
         - Cart
       summary: Counts clothes of Cart.
       operationId: Cart.prototype.__count__clothes
+      parameters:
+        - name: id
+          in: path
+          description: Cart id
+          required: true
+          type: string
+          format: JSON
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  '/Carts/{id}/cartClothes':
+    get:
+      tags:
+        - Cart
+      summary: Queries cartClothes of Cart.
+      operationId: Cart.prototype.__get__cartClothes
+      parameters:
+        - name: id
+          in: path
+          description: Cart id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CartClothes'
+      deprecated: false
+    post:
+      tags:
+        - Cart
+      summary: Creates a new instance in cartClothes of this model.
+      operationId: Cart.prototype.__create__cartClothes
+      parameters:
+        - name: id
+          in: path
+          description: Cart id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/CartClothes'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/CartClothes'
+      deprecated: false
+    delete:
+      tags:
+        - Cart
+      summary: Deletes all cartClothes of this model.
+      operationId: Cart.prototype.__delete__cartClothes
+      parameters:
+        - name: id
+          in: path
+          description: Cart id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Carts/{id}/cartClothes/count':
+    get:
+      tags:
+        - Cart
+      summary: Counts cartClothes of Cart.
+      operationId: Cart.prototype.__count__cartClothes
       parameters:
         - name: id
           in: path
@@ -6218,6 +6388,469 @@ paths:
           schema:
             type: file
       deprecated: false
+  '/Statistics/{id}/cart':
+    get:
+      tags:
+        - Statistic
+      summary: Fetches belongsTo relation cart.
+      operationId: Statistic.prototype.__get__cart
+      parameters:
+        - name: id
+          in: path
+          description: Statistic id
+          required: true
+          type: string
+          format: JSON
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cart'
+      deprecated: false
+  /Statistics:
+    post:
+      tags:
+        - Statistic
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Statistic.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+    patch:
+      tags:
+        - Statistic
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: Statistic.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+    put:
+      tags:
+        - Statistic
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: Statistic.replaceOrCreate__put_Statistics
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+    get:
+      tags:
+        - Statistic
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Statistic.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string (`{"where":{"something":"value"}}`). 
+            See
+            https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries
+            for more details.
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Statistic'
+      deprecated: false
+  /Statistics/replaceOrCreate:
+    post:
+      tags:
+        - Statistic
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: Statistic.replaceOrCreate__post_Statistics_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+  /Statistics/upsertWithWhere:
+    post:
+      tags:
+        - Statistic
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: Statistic.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+  '/Statistics/{id}/exists':
+    get:
+      tags:
+        - Statistic
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Statistic.exists__get_Statistics_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Statistics/{id}':
+    head:
+      tags:
+        - Statistic
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Statistic.exists__head_Statistics_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Statistic
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Statistic.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+    put:
+      tags:
+        - Statistic
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'Statistic.replaceById__put_Statistics_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+    delete:
+      tags:
+        - Statistic
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Statistic.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - Statistic
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: Statistic.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: Statistic id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+  '/Statistics/{id}/replace':
+    post:
+      tags:
+        - Statistic
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'Statistic.replaceById__post_Statistics_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+  /Statistics/findOne:
+    get:
+      tags:
+        - Statistic
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Statistic.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string (`{"where":{"something":"value"}}`). 
+            See
+            https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries
+            for more details.
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Statistic'
+      deprecated: false
+  /Statistics/update:
+    post:
+      tags:
+        - Statistic
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Statistic.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Statistic'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Statistics/count:
+    get:
+      tags:
+        - Statistic
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Statistic.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Statistics/change-stream:
+    post:
+      tags:
+        - Statistic
+      summary: Create a change stream.
+      operationId: Statistic.createChangeStream__post_Statistics_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - Statistic
+      summary: Create a change stream.
+      operationId: Statistic.createChangeStream__get_Statistics_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  /Statistics/clothes:
+    get:
+      tags:
+        - Statistic
+      summary: statistic order by year
+      operationId: Statistic.statisticClothes
+      parameters:
+        - name: year
+          in: query
+          description: year
+          required: false
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/x-any'
+      deprecated: false
 tags:
   - name: Container
   - name: Account
@@ -6231,6 +6864,7 @@ tags:
   - name: Clothes
   - name: CartClothes
   - name: FavorisClothes
+  - name: Statistic
 consumes:
   - application/json
   - application/x-www-form-urlencoded
@@ -6459,7 +7093,7 @@ definitions:
         type: string
       metaDescription:
         type: string
-      record:
+      inputPrice:
         type: number
         format: double
       id:
@@ -6481,6 +7115,9 @@ definitions:
         type: number
         format: double
       price:
+        type: number
+        format: double
+      inputPrice:
         type: number
         format: double
       id:
@@ -6527,6 +7164,9 @@ definitions:
       price:
         type: number
         format: double
+      inputPrice:
+        type: number
+        format: double
       id:
         type: number
         format: double
@@ -6549,6 +7189,21 @@ definitions:
         type: number
         format: double
       clothesId:
+        type: number
+        format: double
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+    additionalProperties: false
+  Statistic:
+    properties:
+      id:
+        type: number
+        format: double
+      cartId:
         type: number
         format: double
       createdAt:

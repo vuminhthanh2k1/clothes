@@ -1,27 +1,16 @@
-import {
-  faHeartbeat,
-  faHeartCircleCheck,
-} from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import RelatedProduct from "../components/shop/RelatedProduct";
-import { apiUrl } from "../enviroments";
 import { addToCart } from "../helper/addToCart";
+import { request } from "../helper/request.helper";
 // import ItemRelated from "../components/shop/ItemRelated";
 import { ProductInterface } from "../models/product.interface";
-import imageHero from "../assets/images/gallery-1.jpg";
-import img1 from "../assets/images/gallery-1.jpg";
-import img2 from "../assets/images/gallery-2.jpg";
-import img3 from "../assets/images/gallery-3.jpg";
-import img4 from "../assets/images/gallery-4.jpg";
-import { request } from "../helper/request.helper";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
 // import '../style/blog.scss'
 
 const access_token = localStorage.getItem("token");
@@ -77,6 +66,7 @@ export default function ShopDetails() {
         productId: productParams.id,
         price: productParams.price,
         userId: user.id,
+        inputPrice: productParams.inputPrice
       });
       addToast(response, { appearance: "info", autoDismiss: true });
     } else {
@@ -100,7 +90,7 @@ export default function ShopDetails() {
       })
       .catch((err) => console.log(err));
   };
-  
+
   return (
     <>
       <Header />

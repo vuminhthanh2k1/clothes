@@ -88,5 +88,9 @@
   "FavorisClothes": {
     "dataSource": "postgres",
     "public": true
+  },
+  "Statistic": {
+    "dataSource": "postgres",
+    "public": true
   }
 }

@@ -22,6 +22,7 @@ module.exports = function (Cart) {
                     clothesId: clothes.productId,
                     amount: 1,
                     price: clothes.price,
+                    inputPrice: clothes.inputPrice,
                     cartId: cart.id,
                 });
                 cartClothesCreate.save();
@@ -38,6 +39,7 @@ module.exports = function (Cart) {
                 clothesId: clothes.productId,
                 amount: 1,
                 price: clothes.price,
+                inputPrice: clothes.inputPrice,
                 cartId: cartCreate.id,
             });
             cartClothesCreate.save();
@@ -274,9 +276,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthFeburary = await Cart.find({
             where: {
@@ -289,9 +299,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthMatch = await Cart.find({
             where: {
@@ -304,9 +322,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthApril = await Cart.find({
             where: {
@@ -319,9 +345,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthMay = await Cart.find({
             where: {
@@ -334,9 +368,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthJune = await Cart.find({
             where: {
@@ -349,9 +391,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthJuly = await Cart.find({
             where: {
@@ -364,9 +414,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthAugust = await Cart.find({
             where: {
@@ -379,9 +437,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthSeptember = await Cart.find({
             where: {
@@ -394,9 +460,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthOctober = await Cart.find({
             where: {
@@ -409,9 +483,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthNovember = await Cart.find({
             where: {
@@ -424,9 +506,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         let monthDecember = await Cart.find({
             where: {
@@ -439,9 +529,17 @@ module.exports = function (Cart) {
                 ],
             },
         }).then((result) => {
-            let total = 0;
-            result.forEach((item) => (total += item.price.valueOf()));
-            return total;
+            let totalPrice = 0;
+            let totalInputPrice = 0;
+            result.forEach((item) => {
+                totalPrice += item.price.valueOf();
+                totalInputPrice += item.inputPrice.valueOf();
+            });
+            return {
+                totalPrice,
+                totalInputPrice,
+                profit: totalPrice - totalInputPrice,
+            };
         });
         resp = [
             {
